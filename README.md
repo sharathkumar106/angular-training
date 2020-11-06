@@ -1,9 +1,8 @@
-# MovieApp
+# Movie App
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
 # Live Preview
-> https://movieapp-wm.netlify.app/
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+### [Movie App - Deployed using Netlify](https://movieapp-wm.netlify.app/)
 
 ## Development server
 
