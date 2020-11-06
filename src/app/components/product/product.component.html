@@ -1,0 +1,50 @@
+<div class="product-form">
+  MODEL:
+  <input [(ngModel)]="phone.model" placeholder="Model" type="text">
+  BRAND:
+  <input [(ngModel)]="phone.brand" placeholder="Brand" type="text">
+
+  <div class="radio-btns">
+    <li>
+      <input type="radio" name="os" id="android" [(ngModel)]="phone.os" value="Android">
+      <label for="android">Android</label>
+    </li>
+    <li>
+      <input type="radio" name="os" id="ios" [(ngModel)]="phone.os" value="iOS">
+      <label for="ios">iOS</label>
+    </li>
+    <li>
+      <input type="radio" name="os" id="black" [(ngModel)]="phone.os" value="Symbian">
+      <label for="black">Symbian</label>
+    </li>
+    <li>
+      <input type="radio" name="os" id="light" [(ngModel)]="phone.os" value="Light OS">
+      <label for="black">Light OS</label>
+    </li>
+  </div>
+  IMAGE:
+  <input [(ngModel)]="phone.imageURL" placeholder="Image URL" type="text">
+  STORAGE:
+  <input [(ngModel)]="phone.memory" placeholder="Storage" type="text">
+  CAMERA:
+  <input [(ngModel)]="phone.camera" placeholder="Camera" type="text">
+  <br>
+  <button class="button" (click)="orderPhone()">Add Phone</button>
+</div>
+
+<div class="product-list">
+  <div class="product" *ngFor="let phone of phoneList">
+    <div class="product-image">
+      <img [src]="phone.imageURL" alt="product">
+    </div>
+    <div class="product-description">
+      <p class="model">{{phone.model}}</p>
+      <p class="brand"><span>Brand</span>{{phone.brand}}</p>
+      <p class="os"><span>OS</span>{{phone.os}}</p>
+      <p class="memory"><span>Memory</span>{{phone.memory}} GB</p>
+      <p class="camera"><span>Camera</span>{{phone.camera}} MP</p>
+      <button class="button" (click)="deletePhone(phone)">Delete</button>
+    </div>
+  </div>
+</div>
+<p class="status" *ngIf="status !== ''">{{status}}</p>

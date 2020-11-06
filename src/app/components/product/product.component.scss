@@ -1,0 +1,116 @@
+.product-list {
+  display: flex;
+  position: relative;
+  overflow: auto;
+  width: 95%;
+  margin: 0 auto;
+
+  .product {
+    background: #e4e4e444;
+    margin: 2rem;
+    height: 28rem;
+    border-radius: 7px;
+    box-shadow: 0 0 7px 3px #33333366;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &-image {
+      height: 25rem;
+      width: 30rem;
+      margin-left: 1.5rem;
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+      overflow: hidden;
+      display: flex;
+      flex: 1;
+    }
+
+    &-description {
+      background: #e4e4e488;
+      height: 25rem;
+      margin-right: 1.5rem;
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .model {
+        font-size: 1.7rem;
+        font-weight: 900;
+      }
+
+      span {
+        margin-right: 1rem;
+        color: #33333366;
+      }
+    }
+  }
+}
+
+.status {
+  margin-left: 1.5rem;
+  color: green;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+
+.product-form {
+  display: block;
+  position: relative;
+  top: 8rem;
+  margin: 0 auto;
+  margin-bottom: 8rem;
+  padding: 1.5rem;
+  width: 90%;
+  text-align: center;
+  font-size: 1.6rem;
+  box-shadow: 0 0 5px 2px #33333366;
+
+  input {
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 0 2rem;
+    height: 4rem;
+    margin: 0 1rem;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0 0 5px 2px #33333366;
+  }
+
+  .radio-btns {
+    display: flex;
+    justify-content: center;
+
+    li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.button {
+  height: 4rem;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+  background: blueviolet;
+  color: #e4e4e4;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-top: 1rem;
+  transition: all .2s;
+
+  &:active {
+    background: blue;
+    border: none;
+    outline: none;
+  }
+}
