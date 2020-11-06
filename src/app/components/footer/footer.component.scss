@@ -1,0 +1,54 @@
+@import '../../../variables';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $black;
+  color: $red-light;
+  font-weight: 600;
+  font-size: 1.4rem;
+
+  .copyright {
+    margin-left: 2rem;
+  }
+
+  .credits {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+
+      li {
+        margin: 0 2rem;
+
+        a {
+          transition: all .3s ease-in-out;
+          display: inline-block;
+          line-height: 1.4rem;
+          padding: .5rem;
+
+          &:link,
+          &:visited,
+          &:active {
+            text-decoration: none;
+            color: $red-light;
+          }
+
+          &:hover {
+            color: $gray-dark;
+            background-color: $red-light;
+            border-radius: 3px;
+            transform: scale(1.1) rotate(-5deg);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import '../../../variables';
+
+.container {
+  background: $gray-dark;
+  height: calc(100vh - 12rem);
+  position: relative;
+  padding: 1rem;
+  color: $gray-light;
+  font-size: 1.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .video-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2rem;
+    margin: 10rem;
+
+    .video iframe {
+      height: 37rem;
+      width: 75rem;
+      border: none;
+      border-radius: 10px;
+      transition: all .3s;
+
+      &:hover {
+        box-shadow: 0 0 12px 8px #1117;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

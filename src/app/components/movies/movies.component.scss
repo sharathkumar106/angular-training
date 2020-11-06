@@ -1,0 +1,136 @@
+@import '../../../variables';
+
+.movies {
+  background: $gray-dark;
+  height: calc(100vh - 12rem);
+  position: relative;
+  padding: 1rem;
+  color: $gray-light;
+  font-size: 1.4rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &-data {
+    display: block;
+    width: 100%;
+  }
+
+  &-form {
+    display: block;
+    width: 35%;
+    text-align: center;
+    padding: 2.5rem 0;
+    box-shadow: 0 0 7px 5px $black;
+    border-radius: 10px;
+
+    .form-group {
+      display: block;
+      height: 4rem;
+      margin: 1rem;
+
+      .form-label {
+        line-height: 4rem;
+        width: 25%;
+        margin-right: 2rem;
+        display: inline-block;
+        height: 4rem;
+        background-color: $black;
+        border-radius: 5px;
+        padding: 0 .5rem;
+
+        @media screen and (max-width:650px) {
+          display: none;
+        }
+      }
+
+      .form-input {
+        height: 100%;
+        padding: 0 2rem;
+        border-radius: 5px;
+        border: solid 1px transparent;
+        width: 65%;
+        background: $black;
+        color: $gray-light;
+        transition: all 0.3s;
+        display: inline-block;
+
+        @media screen and (max-width:650px) {
+          display: none;
+        }
+
+        &:focus {
+          border: solid 1px $gray-light;
+        }
+
+        &::placeholder {
+          font-size: 1.4rem;
+        }
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        height: 100%;
+
+        .input-group {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 1rem;
+          font-size: 1.8rem;
+
+          label {
+            text-align: center;
+            width: 50%;
+          }
+
+          :hover {
+            cursor: pointer;
+            color: $red-dark;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .form-button {
+        height: 100%;
+        width: 90%;
+        font-size: 1.6rem;
+        margin-top: 1rem;
+        font-weight: 700;
+        border-radius: 3rem;
+        background: $black;
+        border: solid 2px $gray-light;
+        color: $gray-light;
+        transition: all .3s;
+
+        &:hover {
+          background: $red-dark;
+          border: solid 2px transparent;
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+    }
+  }
+
+
+  .heading {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .movies-details {
+    display: block;
+    width: 64%;
+    height: 100%;
+    margin-left: 1%;
+  }
+
+}

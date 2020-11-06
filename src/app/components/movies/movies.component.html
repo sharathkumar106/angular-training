@@ -1,0 +1,46 @@
+<div class="movies">
+  <div class="movies-form">
+    <div class="form-group">
+      <label class="form-label" for="title">Title</label>
+      <input [(ngModel)]="movie.title" class="form-input" type="text" name="title" id="title"
+        placeholder="Ex: Captain America">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="year">Year</label>
+      <input [(ngModel)]="movie.year" class="form-input" type="text" name="year" id="year" placeholder="Ex: 2018">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="image">Image</label>
+      <input [(ngModel)]="movie.imageURL" class="form-input" type="text" name="image" id="image"
+        placeholder="Poster Image URL">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="description">Description</label>
+      <input [(ngModel)]="movie.description" class="form-input" type="textarea" aria-rowspan="3" name="description"
+        id="description" placeholder="Description">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="trailerLink">Trailer Link</label>
+      <input [(ngModel)]="movie.trailerLink" class="form-input" type="text" name="trailerLink" id="trailerLink"
+        placeholder="Trailer Link">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="ratings">Ratings</label>
+      <div class="form-input">
+        <ul>
+          <div class="input-group" *ngFor="let ratingValue of [1,2,3,4,5]">
+            <li><input [(ngModel)]="movie.ratings" [id]="ratingValue" [value]="ratingValue" type="radio" name="ratings">
+            </li>
+            <label [for]="ratingValue">{{ratingValue}}</label>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="form-button" (click)="addMovie()">ADD MOVIE</button>
+    </div>
+  </div>
+  <div class="movies-details">
+    <app-movie-card [movieList]="movieList"></app-movie-card>
+  </div>
+</div>
