@@ -24,9 +24,10 @@
     background-color: $red-dark;
     font-size: 2.2rem;
     cursor: pointer;
-    
+
     span {
       transition: all .3s ease-in;
+
       &:hover {
         font-weight: 600;
         transform: scale(1.1);
@@ -67,6 +68,11 @@
           width: 85%;
           outline: none;
         }
+
+        &::placeholder,
+        &::-webkit-input-placeholder {
+          color: white;
+        }
       }
 
       &-icon {
@@ -85,7 +91,40 @@
           transform: scale(1.2);
         }
       }
+    }
 
+    .navigation {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0;
+
+      li {
+        margin: 0 2rem;
+
+        a {
+          transition: all .3s ease-in-out;
+          display: inline-block;
+          line-height: 1.4rem;
+          padding: .5rem;
+          border-bottom: solid 3px transparent;
+          border-top: solid 3px transparent;
+
+          &:link,
+          &:visited,
+          &:active {
+            text-decoration: none;
+            color: $white;
+          }
+
+          &:hover {
+            border-bottom: solid 3px $white;
+            border-radius: 3px;
+            transform: scale(1.1);
+          }
+        }
+      }
     }
   }
 

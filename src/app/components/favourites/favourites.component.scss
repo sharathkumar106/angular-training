@@ -1,0 +1,13 @@
+@import '../../../variables';
+.container {
+  background: $gray-dark;
+  height: calc(100vh - 12rem);
+  position: relative;
+  padding: 1rem;
+  color: $gray-light;
+  font-size: 1.4rem;
+
+  display: block;
+
+  overflow-y: auto;
+}

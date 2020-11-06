@@ -10,6 +10,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { FavouritesComponent } from './components/favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     MoviesComponent,
     MovieCardComponent,
     MovieDetailsComponent,
-    SafePipe
+    SafePipe,
+    HomepageComponent,
+    FavouritesComponent
   ],
   imports: [
     BrowserModule,

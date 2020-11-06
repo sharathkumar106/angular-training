@@ -15,6 +15,9 @@
           <i class="fas fa-play"></i>
         </a>
       </div>
+      <a class="wishlist-button" *ngIf="!isItemAdded" (click)="addtoWishList($event,movie)">
+        <i class="fas fa-bookmark"></i>
+      </a>
     </div>
   </div>
 </div>

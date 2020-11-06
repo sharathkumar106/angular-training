@@ -16,4 +16,23 @@ export class MovieService {
   getMovie(id: string): Movie {
     return MOVIES.find(movie => movie.id === id);
   }
+
+  saveToLocal(movie: Movie): void {
+    let existingList = [];
+    existingList = JSON.parse(localStorage.getItem('movielist')) || [];
+    existingList.push(movie);
+    localStorage.setItem('movielist', JSON.stringify(existingList));
+  }
+
+  getFromLocal(): Movie[] {
+    let existingList: Movie[];
+    existingList = JSON.parse(localStorage.getItem('movielist'));
+    return existingList;
+  }
+
+  alreadyExists(movie: Movie): boolean {
+    let existingList = [];
+    existingList = JSON.parse(localStorage.getItem('movielist')) || [];
+    return existingList.includes(movie);
+  }
 }

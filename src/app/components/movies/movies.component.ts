@@ -1,5 +1,4 @@
 import { MovieService } from './../../services/movie.service';
-import { MOVIES } from './mockmovies';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from './movie';
 @Component({
@@ -8,6 +7,9 @@ import { Movie } from './movie';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
+
+  youtubeLink = 'https://www.youtube.com/embed/';
+  trailerLink = '';
 
   movie: Movie = {
     id: '',
@@ -21,18 +23,19 @@ export class MoviesComponent implements OnInit {
 
   movieList: Movie[];
 
-  constructor(private movieservice: MovieService) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.loadMovies();
   }
 
   loadMovies(): void {
-    this.movieList = this.movieservice.getMovies();
+    this.movieList = this.movieService.getMovies();
   }
 
   addMovie(): void {
     this.movie.id = this.generateId();
+    this.movie.trailerLink = this.youtubeLink + this.trailerLink;
     const tempMovie: Movie = { ...this.movie };
     this.movieList.unshift(tempMovie);
   }

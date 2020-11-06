@@ -2,10 +2,14 @@
   <app-movie-card [movieList]="selectedMovie"></app-movie-card>
   <div class="video-player">
     <div class="video">
-      <iframe [src]="movie.trailerLink | safe"></iframe>
+      <iframe [src]="movie.trailerLink | safe"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
+  </div>
 </div>
-</div>
+
+
 
 <!-- <div class="info">
   <h2>{{movie.title}}</h2>
