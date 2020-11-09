@@ -1,0 +1,33 @@
+.hero-details {
+    display: block;
+    position: fixed;
+    top: 25%;
+    right: 5rem;
+
+    box-shadow: 0 0 7px 3px #0003;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.item {
+    color: white;
+    padding: 1em;
+    background-color: #405061;
+    height: 2em;
+    line-height: 2em;
+    margin-top: 1em;
+    border-radius: 5px;
+
+    strong {
+        margin-right: 1em;
+    }
+
+    .input {
+        height: 90%;
+        padding: 0 1em;
+        font-weight: 700;
+        border: none;
+        border-radius: 5px;
+        right: 0;
+    }
+}

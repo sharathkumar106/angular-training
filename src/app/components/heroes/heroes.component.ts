@@ -9,7 +9,6 @@ import { Hero } from './hero';
 })
 export class HeroesComponent implements OnInit {
   selectedHero: Hero;
-
   heroes = HEROES;
 
   constructor() { }

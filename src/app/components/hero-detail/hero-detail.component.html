@@ -1,9 +1,14 @@
-<div *ngIf="hero">
+<div *ngIf="hero" class="hero-details">
   <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name" />
-    </label>
+    <div class="item">
+      <strong>ID:</strong>{{hero.id}}
+    </div>
+    <div class="item">
+      <strong>Name:</strong><input class="input" [(ngModel)]="hero.name" placeholder="name" />
+    </div>
+    <div class="item">
+      <strong>Ratings:</strong><input class="input" [(ngModel)]="hero.ratings" placeholder="ratings" /></div>
+    <div class="item">{{hero.date | date:'long' }}</div>
   </div>
 </div>

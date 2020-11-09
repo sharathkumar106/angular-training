@@ -2,7 +2,7 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  width: 25em;
 
   li {
     cursor: pointer;
@@ -10,39 +10,67 @@
     left: 0;
     background-color: #EEE;
     margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
+    height: 5em;
     border-radius: 4px;
+    border: solid 2px #8474dd;
 
     &:hover {
       color: #607D8B;
       background-color: #DDD;
-      left: .1em;
+      left: .5em;
     }
 
     &.selected {
-      background-color: #CFD8DC;
-      color: white;
+      background-color: #8474dd;
+      color: rgb(252, 244, 244);
 
       &:hover {
         background-color: #BBD8DC;
-        color: white;
+        color: rgb(95, 74, 74);
       }
     }
   }
 
   .badge {
-    display: inline-block;
     font-size: small;
     color: white;
-    padding: 0.8em 0.7em 0 0.7em;
+    padding: .5em;
     background-color: #405061;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
+    line-height: 2em;
+    height: 2em;
+
+    &-1 {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      margin-right: .8em;
+      border-radius: 4px 0 0 4px;
+
+    }
+
+    &-2 {
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      margin-left: .8em;
+      border-radius: 0 4px 4px 0;
+    }
+
+    &-3 {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 0 0 5px 5px;
+      text-align: center;
+
+    }
+  }
+
+  .name {
+    display: inline-block;
+    margin-left: 3em;
+    line-height: 2.4em;
   }
 }
