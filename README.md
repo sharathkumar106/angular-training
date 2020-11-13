@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <hr>
 
 ## Live Preview
-> [Marvel Site Clone] (https://www.marvel-wm.netlify.app)
+### [Marvel Site Clone](https://www.marvel-wm.netlify.app)
 
 <hr>
 ## Development server
