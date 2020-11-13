@@ -11,15 +11,6 @@
   left: 0;
   right: 0;
 
-  .homepage-cover {
-    position: fixed;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: calc(100vh - 14rem);
-    object-fit: cover;
-  }
-
   .content {
     position: fixed;
     background: #0009;
