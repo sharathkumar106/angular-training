@@ -1,0 +1,68 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+.homepage {
+  background-color: $black;
+  position: relative;
+  padding: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, $secondary, $black 45%);
+    opacity: .7;
+    z-index: 1;
+  }
+
+  & > * {
+      z-index: 10;
+  }
+
+  .homepage-cover {
+    width: 100%;
+    height: calc(100vh - 3.85rem);
+    object-fit: cover;
+  }
+
+  .content {
+    @include position-middle-screen();
+    color: $light;
+    text-align: center;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .form-button {
+      height: 4rem;
+      width: 30%;
+      position: relative;
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      font-weight: 700;
+      border-radius: 2rem;
+      color: $light;
+      background: $primary;
+      border: solid 2px transparent;
+      cursor: pointer;
+      outline: none;
+
+      transition: all .3s;
+
+      &:hover {
+        background: $black;
+        border: solid 2px $light;
+      }
+
+      &:active {
+        transform: translateY(2px);
+        outline: none;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div class="container cast">
+    <div class="banner" *ngIf="!castExist">
+      <img src="../../../assets/EmptyBox.jpg" alt="Empty Box">
+      <h3 class="text-center">No Characters Found</h3>
+    </div>
+    <div class="content" *ngIf="castExist">
+      <div class="content-header">
+        <h3>Movie Cast</h3>
+      </div>
+      <div class="row" *ngIf="castExist">
+        <div class="cast-card col-sm-4 col-md-3 col-lg-2" *ngFor="let character of cast">
+          <a class="card-link">
+            <div class="card-head">
+              <figure class="image-wrapper">
+                <img src="{{character.thumbnail.path | append:'portrait_medium':character.thumbnail.extension}}">
+              </figure>
+            </div>
+            <div class="card-content slider">
+              <p class="card-content-headline">{{character.name}}</p>
+              <p class="card-content-footer">{{character.series.title ? character.series : 'Marvel' }}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

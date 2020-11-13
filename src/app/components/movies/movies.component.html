@@ -1,0 +1,33 @@
+<div class="container-fluid movies">
+  <div class="banner">
+    <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/movies_art_mas_mob_05.jpg" alt="Banner">
+    <div class="heading">
+      <h1>MOVIES</h1>
+      <p>Journey into the cosmic depths of the mighty Marvel Cinematic Universe!</p>
+    </div>
+    <!-- <video autoplay muted loop>
+      <source src="../../../assets/homepage-cover.mp4" type="video/mp4">
+    </video> -->
+  </div>
+  <div class="content">
+    <div class="content-header">
+      <h3>Marvel Movies</h3>
+    </div>
+    <div class="content-body row">
+      <div class="movie-card col-sm-4 col-md-3 col-lg-2" *ngFor="let movie of movies">
+        <a routerLink="{{movie.id}}" class="movie-card-link">
+          <div class="movie-card-frame">
+            <figure class="movie-card-image">
+              <img class="image" src="{{movie.thumbnail.path | append:'portrait_medium':movie.thumbnail.extension}}"
+                alt="{{movie.title}}">
+            </figure>
+          </div>
+          <div class="movie-card-body">
+            <p class="title">{{movie.title}}</p>
+            <p class="footer">{{movie.startYear}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

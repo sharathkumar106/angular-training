@@ -1,0 +1,181 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+
+.characters {
+  background-color: $white;
+  color: $dark;
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 2.5rem - 15px);
+  padding: 15px 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .banner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 320px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to left, $black, $gray);
+      opacity: .7;
+      z-index: 1;
+    }
+
+    video,
+    img {
+      height: 320px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .heading {
+      @include position-middle-screen();
+      color: $white;
+      z-index: 10;
+      text-align: center;
+
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1.1px;
+      }
+    }
+  }
+
+  .content {
+    max-width: 1240px;
+    padding-top: 15px;
+    margin: 0 auto;
+    color: inherit;
+
+    &-header h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  .character-card {
+    width: 100%;
+    white-space: normal;
+    position: relative;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 85% 100%, 0% 100%);
+    z-index: 10;
+    margin: 10px 0;
+
+    .card-link {
+      text-decoration: none;
+      color: $white;
+      cursor: pointer;
+    }
+
+    .card-head {
+      background: $primary;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      height: 200px;
+      width: 100%;
+
+      .image-wrapper {
+        margin: 0;
+        height: 100%;
+        position: relative;
+
+        &::after {
+          height: 4px;
+          content: "";
+          background-color: $primary;
+          width: 100%;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+
+        img {
+          transform: scale(1);
+          transition: all .2s linear;
+          backface-visibility: hidden;
+          overflow: hidden;
+          object-position: top center;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .card-content {
+      height: 145px;
+      padding: 15px;
+      overflow: hidden;
+      position: relative;
+      line-height: 1;
+      z-index: 100;
+
+      &.slider {
+        background: #000;
+
+        &::before {
+          background: $primary;
+          bottom: 100%;
+          content: "";
+          height: 100%;
+          left: 0;
+          position: absolute;
+          transition: all .3s;
+          backface-visibility: hidden;
+          width: 100%;
+          z-index: -1;
+        }
+      }
+
+      &-headline {
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+
+      &-footer {
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        color: $light;
+
+        position: absolute;
+        bottom: 15px;
+
+      }
+    }
+
+    .card-link:hover {
+      & .slider::before {
+        transform: translate3d(0, 100%, 0);
+      }
+
+      & .image-wrapper img {
+        transform: scale3d(1.05, 1.05, 1.0);
+      }
+
+      & .card-content-footer {
+        color: $white;
+      }
+    }
+  }
+}

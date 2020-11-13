@@ -1,0 +1,29 @@
+<div class="container characters">
+  <div class="banner">
+    <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/characters_art_mas_mob_01.jpg" alt="Banner">
+    <div class="heading">
+      <h1>MARVEL CHARACTERS</h1>
+      <p>Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!</p>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-header">
+      <h3>Marvel Characters</h3>
+    </div>
+    <div class="row">
+      <div class="character-card col-sm-4 col-md-3 col-lg-2" *ngFor="let character of characters">
+        <a class="card-link">
+          <div class="card-head">
+            <figure class="image-wrapper">
+              <img src="{{character.thumbnail.path | append:'portrait_medium':character.thumbnail.extension}}">
+            </figure>
+          </div>
+          <div class="card-content slider">
+            <p class="card-content-headline">{{character.name}}</p>
+            <p class="card-content-footer">{{character.series.title ? character.series : 'Marvel' }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
