@@ -12,4 +12,6 @@ A collection of all the tasks performed during Angular Training - 2020
 
 ## [Task 5: Marvel Site Clone](https://github.com/sharathkumar106/angular-training/tree/task-5-MarvelSiteClone)
 
-### [Task 5.1: Marvel Site Clone (Updated)](https://github.com/sharathkumar106/Marvel-Site-Clone-Angular)
+- [Task 5.1: Marvel Site Clone (Updated)](https://github.com/sharathkumar106/Marvel-Site-Clone-Angular)
+
+## [Task 6: Policy App](https://github.com/sharathkumar106/angular-training/tree/task-6-PolicyApp)
