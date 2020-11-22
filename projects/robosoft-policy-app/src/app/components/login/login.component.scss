@@ -1,0 +1,52 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+.container-fluid {
+  background: $background-gradient;
+  position: relative;
+  min-height: calc(100% - 10rem);
+
+  .container {
+    height: 38.5rem;
+    max-width: 53.5rem;
+    border-radius: 2rem;
+    font-size: 1.6rem;
+    box-shadow: $container-shadow;
+    background-color: $color-white;
+    @include position-middle();
+
+    .form {
+      width: 78%;
+      text-align: center;
+      @include position-middle();
+
+      &-title {
+        font-size: 2.4rem;
+        font-family: Inter, sans-serif;
+        font-weight: 500;
+        letter-spacing: 0;
+        margin: 3rem 0;
+      }
+
+      &-forgot-password {
+        opacity: 0.8;
+        color: $color-black;
+        font-size: 1.2rem;
+        letter-spacing: 0;
+        display: inline-block;
+        position: relative;
+        margin-bottom: 3rem;
+      }
+
+      .mat-raised-button {
+        @include customize-mat-button(35%, 5rem, 2.5rem, $color-primary, $color-white);
+        font-size: 1.4rem;
+        font-weight: 500;
+        letter-spacing: 1.25px;
+        display: block;
+        margin: 0 auto 1.5rem;
+        text-align: center;
+      }
+    }
+  }
+}

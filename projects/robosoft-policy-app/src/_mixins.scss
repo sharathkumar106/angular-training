@@ -1,0 +1,131 @@
+@mixin position-vertical-middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin position-horizontal-middle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin position-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin customize-material-input($custom-input-color, $custom-label-color, $custom-outline-color) {
+  .mat-form-field {
+    font-size: inherit !important;
+    width: inherit !important;
+    margin-bottom: 4px !important;
+
+    // input outline color
+    &-appearance-outline &-outline {
+      color: $custom-outline-color !important;
+    }
+
+    // mat-input focused color
+    &-appearance-outline.mat-focused &-outline-thick {
+      color: $custom-outline-color !important;
+    }
+
+    // mat-input error outline color
+    &-appearance-outline.mat-form-field-invalid.mat-form-field-invalid &-outline-thick {
+      color: $custom-outline-color !important;
+      opacity: 0.8 !important;
+    }
+
+    // mat-infix padding
+    &-infix {
+      padding: 0 0 .5em 0 !important;
+    }
+
+    // mat-input caret color
+    .mat-input-element {
+      caret-color: $custom-input-color !important;
+      padding: .5em 0 .5em 0;
+    }
+
+    // mat-input error caret color
+    &-invalid .mat-input-element,
+    .mat-warn .mat-input-element {
+      caret-color: $custom-input-color !important;
+    }
+
+    // mat-label normal state style
+    &-label {
+      color: $custom-label-color !important;
+      letter-spacing: 0.15px !important;
+      line-height: 1em !important;
+      height: 1em !important;
+      top: 1.34375em !important;
+      margin-top: 0 !important;
+    }
+
+    // mat-label focused style
+    &.mat-focused &-label {
+      color: $custom-label-color !important;
+      // font-size: 0.75em !important;
+      transform: translateY(-1.59375em) scale(.75) !important;
+    }
+
+    // mat-input-filled mat-label style
+    &-can-float.mat-form-field-should-float .mat-form-field-label {
+      transform: translateY(-1.34375em) scale(0.75) !important;
+    }
+
+    // mat-label error style
+    &.mat-form-field-invalid &-label {
+      color: $custom-input-color !important;
+    }
+  }
+}
+
+@mixin customize-mat-button($width, $height, $border-radius, $background, $color) {
+  height: $height;
+  width: $width;
+  border-radius: $border-radius;
+  background: $background;
+  color: $color;
+}
+
+@mixin customize-mat-fab-button() {
+  .mat-fab {
+    background-color: $color-primary !important;
+  }
+}
+
+@mixin customize-mat-date-picker {
+  .mat-form-field-suffix .mat-icon-button {
+    color: $color-primary !important;
+  }
+
+  // .cdk-overlay-container .mat-calendar-body-cell-content .mat-focus-indicator .mat-calendar-body-selected,
+  // .cdk-overlay-container .mat-datepicker-toggle {
+  //   background-color: $color-primary !important;
+  // }
+}
+
+@mixin customize-mat-file-input {
+  .ngx-mat-file-input {
+    height: 2.2em !important;
+  }
+
+  .ngx-mat-file-input .mat-form-field-suffix {
+    position: absolute;
+    right: 0;
+    top: -.25em !important;
+    z-index: 1;
+    background: white;
+  }
+}
+
+@mixin customize-mat-dialog-container {
+  .mat-dialog-container {
+    border-radius: 2rem !important;
+  }
+}

@@ -1,0 +1,23 @@
+$color-primary: #D92756;
+$color-secondary: #BD385B;
+$color-accent: #7A7FC8;
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-grey-light-1: #F7F7F7;
+$color-grey-light-2: rgba(0, 0, 0, 0.02);
+$color-grey-light-3: rgba(217, 39, 86, 0.05);
+$color-grey-dark-1: rgba(0, 0, 0, 0.38);
+$color-grey-dark-2: rgba(0, 0, 0, 0.60);
+$color-grey-dark-3: rgba(0, 0, 0, 0.87);
+
+$custom-outline-color: $color-grey-dark-1;
+$custom-label-color: $color-grey-dark-2;
+$custom-input-color: $color-grey-dark-3;
+
+$header-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.14);
+$container-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.2);
+$homepage-shadow: 0 4px 40px 0 rgba(217, 39, 86, 0.08);
+
+$background-gradient: linear-gradient(52.03deg, $color-accent 0%, $color-secondary 100%);
+
+$default-font-size: 62.5%; // 1rem = 10px

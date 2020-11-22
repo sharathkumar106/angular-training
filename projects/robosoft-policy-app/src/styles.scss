@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@300;400;500&display=swap');
+@import '../../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+@import './variables';
+@import './mixins';
+
+@include customize-material-input($custom-input-color, $custom-label-color, $custom-outline-color);
+@include customize-mat-date-picker();
+@include customize-mat-file-input();
+@include customize-mat-fab-button();
+@include customize-mat-dialog-container();
+
+html,
+body {
+  height: 100%;
+  font-size: $default-font-size;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+
+  &:link,
+  &:active,
+  &:visited {
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

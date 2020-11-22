@@ -1,0 +1,167 @@
+<div class="container-fluid py-4 px-lg-5">
+  <div class="row margin-large">
+    <div class="sidebar-container col-12 col-sm-12 col-md-4 col-lg-3 mb-4 mb-md-0 pr-md-0">
+      <div class="sidebar p-3">
+        <div class="sidebar-header my-md-4">
+          <h1 class="sidebar-header-title">Your<br>Questionnaires</h1>
+          <button class="sidebar-header-cta" mat-raised-button>New Questionnaire</button>
+        </div>
+        <div class="sidebar-body">
+          <a mat-button class="sidebar-body-link active">
+            <span class="col-11 col-sm-10">Secure Coding Guidel...</span>
+            <!-- <mat-icon class="col-2" aria-label="Right Chevron Icon">chevron_right</mat-icon> -->
+          </a>
+          <a mat-button class="sidebar-body-link" aria-label="ISMS Questionnaire">
+            <span class="col-11 col-sm-10">ISMS Questionnaire</span>
+            <mat-icon class="col-1 col-sm-2" aria-label="Right Chevron Icon">chevron_right</mat-icon>
+          </a>
+          <a mat-button class="sidebar-body-link" aria-label="ISMS Questionnaire">
+            <span class="col-11 col-sm-10">PA Questionnaire</span>
+            <mat-icon class="col-1 col-sm-2" aria-label="Right Chevron Icon">chevron_right</mat-icon>
+          </a>
+          <a mat-button class="sidebar-body-link" aria-label="ISMS Questionnaire">
+            <span class="col-11 col-sm-10">Process Guidelines</span>
+            <mat-icon class="col-1 col-sm-2" aria-label="Right Chevron Icon">chevron_right</mat-icon>
+          </a>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-8 col-lg-9">
+      <div class="questionnaire row">
+        <div class="questionnaire-form col-sm-8">
+          <div class="questionnaire-form-main">
+            <h2 class="questionnaire-form-title">Questionnaire</h2>
+            <div class="mat-input-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Title</mat-label>
+                <input matInput>
+                <mat-hint>Please enter appropriate title</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="mat-input-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput rows="3"
+                  value="These Guidelines helps you to code in a secure manner which would assist in keeping the product data safe"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="mat-input-group col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Button Title</mat-label>
+                  <input matInput value="I Accept">
+                </mat-form-field>
+              </div>
+              <div class="mat-input-group col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Button Text</mat-label>
+                  <input matInput value="I have read the guidelines">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="mat-input-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Check Box Text</mat-label>
+                <input matInput value="I have read the guidelines">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="questionnaire-form-additional">
+            <h2 class="questionnaire-form-title">Additional Details</h2>
+            <div class="row">
+              <div class="mat-input-group col-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Select Start Date</mat-label>
+                  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="start">
+                  <mat-datepicker-toggle matSuffix [for]="start" class="input-suffix-date"></mat-datepicker-toggle>
+                  <mat-datepicker #start></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="mat-input-group col-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Select End Date</mat-label>
+                  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="end">
+                  <mat-datepicker-toggle matSuffix [for]="end" class="input-suffix-date"></mat-datepicker-toggle>
+                  <mat-datepicker #end></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="mat-input-group col-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Auto Reminder</mat-label>
+                  <input matInput>
+                  <span matSuffix class="input-suffix-days">Days</span>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mat-input-group col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Select Content PPT File</mat-label>
+                  <ngx-mat-file-input [multiple]=false [accept]="'.ppt,.pptx'">
+                    <mat-icon ngxMatFileInputIcon class="input-suffix-file">cloud_upload</mat-icon>
+                  </ngx-mat-file-input>
+                </mat-form-field>
+              </div>
+              <div class="mat-input-group col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Select Participant Excel Sheet</mat-label>
+                  <ngx-mat-file-input [multiple]=false [accept]="'.ppt,.pptx'">
+                    <mat-icon ngxMatFileInputIcon class="input-suffix-file">cloud_upload</mat-icon>
+                  </ngx-mat-file-input>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="mat-input-group mb-0">
+              <mat-form-field appearance="outline">
+                <mat-label>Mail Body</mat-label>
+                <textarea matInput rows="4">Hello <Name> You are hear-by invited to read and accept the terms and conditions by clicking on the following link<link>
+                </textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="questionnaire-controls col-sm-4">
+          <button class="button-control" mat-button>
+            <mat-icon>save</mat-icon>Save
+          </button>
+          <button class="button-control" mat-button>
+            <mat-icon>preview</mat-icon>Preview
+          </button>
+          <button class="button-control" mat-button>
+            <mat-icon>publish</mat-icon>Publish
+          </button>
+          <button class="button-control" mat-button>
+            <mat-icon>add_alert</mat-icon>Remind
+          </button>
+          <button class="button-control" mat-button>
+            <mat-icon>article</mat-icon>Generate Report
+          </button>
+        </div>
+        <div id="overlay" class="overlay">
+          <button mat-fab aria-label="Menu Icon" (click)="isMenuOpen = !isMenuOpen; isOverlayOpen = !isOverlayOpen"
+            type="button">
+            <mat-icon>{{ isOverlayOpen ? 'close' : 'add'}}</mat-icon>
+          </button>
+          <div class="overlay-background" [ngClass]="{'transform' : isOverlayOpen}">&nbsp;</div>
+          <div class="overlay-menu" *ngIf="isMenuOpen">
+            <ul>
+              <li>
+                <button mat-raised-button class="overlay-menu-option" routerLink="/reset-password">Change
+                  Password</button>
+              </li>
+              <li>
+                <button mat-raised-button class="overlay-menu-option" (click)="openModal()">Add/Remove Super
+                  Admins</button>
+              </li>
+              <li>
+                <button mat-raised-button class="overlay-menu-option" routerLink="/new/admin">Add/Remove Admins</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

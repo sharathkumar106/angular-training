@@ -1,0 +1,53 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.modal-container {
+
+  mat-dialog-content#modal-body {
+    width: 60vw;
+    max-height: 70vh;
+    position: relative;
+
+    .form-add-user {
+      font-size: 1.6rem;
+      padding: 1.5rem 1.5rem 0;
+      margin: 0 1.5rem;
+
+      h2 {
+        font-size: 2.4rem;
+        font-weight: 500;
+        color: $color-black;
+        letter-spacing: 0;
+      }
+    }
+
+    .form-edit-user {
+      font-size: 1.6rem;
+      border-top: 1px dashed #a2a2a2c0;
+      padding: 2.5rem 5.4rem 0;
+      margin: 0 -2.4rem;
+
+    }
+  }
+
+  mat-dialog-actions#modal-actions {
+    padding: 3rem 0 3rem 5.4rem;
+    margin: 0 -2.4rem;
+  }
+
+  .modal-button {
+    @include customize-mat-button(100%, 4rem, 2rem, $color-primary, $color-white);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+    text-align: center;
+  }
+
+  .close-button {
+    display: inline-block;
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    line-height: 2.4rem;
+  }
+}

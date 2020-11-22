@@ -1,0 +1,25 @@
+@import '../login.component.scss';
+
+.container {
+  height: 20rem !important;
+  max-width: 56.3rem !important;
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: $container-shadow;
+  background-color: $color-white;
+  @include position-middle();
+
+  .form {
+      width: 100% !important;
+  }
+
+  .message {
+    font-size: 1.6rem;
+    color: $color-black;
+    margin-bottom: 2.5rem;
+  }
+
+  .mat-raised-button {
+      margin: 0 auto 0 !important;
+  }
+}
