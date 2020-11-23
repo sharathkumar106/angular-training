@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 
 @Component({
@@ -12,15 +12,19 @@ export class HomepageComponent implements OnInit {
   isOverlayOpen = false;
   isMenuOpen = false;
 
-  constructor(public matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
   }
 
-  openModal(): void {
-    const dialogRef = this.matDialog.open(ModalComponent);
+  openModal(userMode: string): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      userMode
+    };
+    const dialogRef = this.matDialog.open(ModalComponent, dialogConfig);
     this.isMenuOpen = false;
     dialogRef.afterClosed().subscribe(() => {
       this.isMenuOpen = true;

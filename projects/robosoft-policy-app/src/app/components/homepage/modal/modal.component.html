@@ -4,7 +4,7 @@
       <mat-icon>close</mat-icon>
     </button>
     <div class="form-add-user">
-      <h2 mat-dialog-title>Add/Remove Super Admins</h2>
+      <h2 mat-dialog-title>Add/Remove {{ userMode }}</h2>
       <div class="row">
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Name</mat-label>
@@ -26,42 +26,18 @@
       </div>
     </div>
     <div class="form-edit-user">
-      <div class="row">
+      <div class="row" *ngFor="let admin of superAdminList || adminList">
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Name</mat-label>
-          <input matInput>
+          <input matInput value="{{admin.name}}">
         </mat-form-field>
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Employee Code</mat-label>
-          <input matInput>
+          <input matInput value="{{admin.employeeCode}}">
         </mat-form-field>
         <mat-form-field appearance="outline" class="col-sm-12 col-md-4 pr-0 pr-md-3">
           <mat-label>Enter Mail ID</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <div class="col-6 col-md-1 d-flex justify-content-center">
-          <button mat-fab>
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
-        <div class="col-6 col-md-1 d-flex justify-content-center">
-          <button mat-fab>
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
-          <mat-label>Enter Name</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
-          <mat-label>Enter Employee Code</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="col-sm-12 col-md-4 pr-0 pr-md-3">
-          <mat-label>Enter Mail ID</mat-label>
-          <input matInput>
+          <input matInput value="{{admin.mailID}}">
         </mat-form-field>
         <div class="col-6 col-md-1 d-flex justify-content-center">
           <button mat-fab>
