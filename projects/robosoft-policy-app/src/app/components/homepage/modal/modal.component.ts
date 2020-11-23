@@ -15,6 +15,13 @@ export class ModalComponent implements OnInit {
   adminList: Admin[];
   superAdminList: Admin[];
 
+  newUser: Admin = {
+    mode: '',
+    name: '',
+    employeeCode: '',
+    mailID: ''
+  };
+
   constructor(
     private dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
@@ -22,7 +29,6 @@ export class ModalComponent implements OnInit {
     private adminInfoService: AdminInfoService
   ) {
     this.userMode = data.userMode;
-    console.log('Constructor');
   }
 
   ngOnInit(): void {
@@ -41,5 +47,19 @@ export class ModalComponent implements OnInit {
 
   loadSuperAdminList(): void {
     this.superAdminList = this.adminInfoService.getSuperAdminList();
+  }
+
+  addNewAdmin(): void {
+    const newAdmin = { ...this.newUser};
+    newAdmin.mode = 'Admin';
+    this.adminInfoService.addNewUser(newAdmin);
+    this.loadAdminList();
+  }
+
+  addNewSuperAdmin(): void {
+    const newAdmin = { ...this.newUser};
+    newAdmin.mode = 'Super Admin';
+    this.adminInfoService.addNewUser(newAdmin);
+    this.loadSuperAdminList();
   }
 }

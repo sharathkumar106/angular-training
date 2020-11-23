@@ -14,6 +14,7 @@ import { NotificationComponent } from './components/login/notification/notificat
 import { ModalComponent } from './components/homepage/modal/modal.component';
 import { SidebarComponent } from './components/homepage/sidebar/sidebar.component';
 import { QuestionnaireComponent } from './components/homepage/questionnaire/questionnaire.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { QuestionnaireComponent } from './components/homepage/questionnaire/ques
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     VendorsModule
   ],
