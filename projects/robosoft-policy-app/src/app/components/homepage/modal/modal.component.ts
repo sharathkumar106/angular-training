@@ -1,8 +1,7 @@
 import { Admin } from './../../../models/admin.model';
 import { AdminInfoService } from './../../../services/admin-info.service';
-import { Component, EventEmitter, Inject, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal',
@@ -24,9 +23,7 @@ export class ModalComponent implements OnInit {
   };
 
   constructor(
-    private dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    private formBuilder: FormBuilder,
     private adminInfoService: AdminInfoService
   ) {
     this.userMode = data.userMode;
@@ -40,7 +37,6 @@ export class ModalComponent implements OnInit {
     if (this.userMode === 'Super Admins') {
       this.loadSuperAdminList();
     }
-    console.log('Total Users: ' + this.adminList.length + ' users');
   }
 
   loadAdminList(): void {
@@ -67,7 +63,7 @@ export class ModalComponent implements OnInit {
 
   }
 
-  deleteUser(code): void {
+  deleteUser(code: string): void {
     if (this.userMode === 'Admins') {
       this.adminList.forEach((user, index) => {
         if (user.employeeCode === code) {
