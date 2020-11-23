@@ -1,1 +1,111 @@
-<p>questionnaire works!</p>
+<div class="questionnaire row">
+  <div class="questionnaire-form col-sm-8">
+    <div class="questionnaire-form-main">
+      <h2 class="questionnaire-form-title">Questionnaire</h2>
+      <div class="mat-input-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter Title</mat-label>
+          <input matInput>
+          <mat-hint>Please enter appropriate title</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="mat-input-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="3"
+            value="These Guidelines helps you to code in a secure manner which would assist in keeping the product data safe"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="mat-input-group col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Button Title</mat-label>
+            <input matInput value="I Accept">
+          </mat-form-field>
+        </div>
+        <div class="mat-input-group col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Button Text</mat-label>
+            <input matInput value="I have read the guidelines">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mat-input-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Check Box Text</mat-label>
+          <input matInput value="I have read the guidelines">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="questionnaire-form-additional">
+      <h2 class="questionnaire-form-title">Additional Details</h2>
+      <div class="row">
+        <div class="mat-input-group col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Select Start Date</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="start">
+            <mat-datepicker-toggle matSuffix [for]="start" class="input-suffix-date"></mat-datepicker-toggle>
+            <mat-datepicker #start></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="mat-input-group col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Select End Date</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="end">
+            <mat-datepicker-toggle matSuffix [for]="end" class="input-suffix-date"></mat-datepicker-toggle>
+            <mat-datepicker #end></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="mat-input-group col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Auto Reminder</mat-label>
+            <input matInput>
+            <span matSuffix class="input-suffix-days">Days</span>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mat-input-group col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Select Content PPT File</mat-label>
+            <ngx-mat-file-input [multiple]=false [accept]="'.ppt,.pptx'">
+              <mat-icon ngxMatFileInputIcon class="input-suffix-file">cloud_upload</mat-icon>
+            </ngx-mat-file-input>
+          </mat-form-field>
+        </div>
+        <div class="mat-input-group col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Select Participant Excel Sheet</mat-label>
+            <ngx-mat-file-input [multiple]=false [accept]="'.ppt,.pptx'">
+              <mat-icon ngxMatFileInputIcon class="input-suffix-file">cloud_upload</mat-icon>
+            </ngx-mat-file-input>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mat-input-group mb-0">
+        <mat-form-field appearance="outline">
+          <mat-label>Mail Body</mat-label>
+          <textarea matInput rows="4">Hello <Name> You are hear-by invited to read and accept the terms and conditions by clicking on the following link<link>
+			</textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="questionnaire-controls col-sm-4">
+    <button class="button-control" mat-button>
+      <mat-icon>save</mat-icon>Save
+    </button>
+    <button class="button-control" mat-button>
+      <mat-icon>preview</mat-icon>Preview
+    </button>
+    <button class="button-control" mat-button>
+      <mat-icon>publish</mat-icon>Publish
+    </button>
+    <button class="button-control" mat-button>
+      <mat-icon>add_alert</mat-icon>Remind
+    </button>
+    <button class="button-control" mat-button>
+      <mat-icon>article</mat-icon>Generate Report
+    </button>
+  </div>
+</div>
