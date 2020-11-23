@@ -5,6 +5,7 @@
     </button>
     <div class="form-add-user">
       <h2 mat-dialog-title>Add/Remove {{ userMode }}</h2>
+      <p *ngFor="let admin of adminList">{{admin.name}} - {{admin.employeeCode}}</p>
       <div class="row">
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Name</mat-label>
@@ -26,7 +27,7 @@
       </div>
     </div>
     <div class="form-edit-user">
-      <div class="row" *ngFor="let admin of superAdminList || adminList">
+      <div class="row" *ngFor="let admin of adminList || superAdminList">
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Name</mat-label>
           <input matInput value="{{admin.name}}">
@@ -40,12 +41,12 @@
           <input matInput value="{{admin.mailID}}">
         </mat-form-field>
         <div class="col-6 col-md-1 d-flex justify-content-center">
-          <button mat-fab>
+          <button mat-fab (click)="editUser()">
             <mat-icon>edit</mat-icon>
           </button>
         </div>
         <div class="col-6 col-md-1 d-flex justify-content-center">
-          <button mat-fab>
+          <button mat-fab (click)="deleteUser(admin.employeeCode)">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
@@ -53,7 +54,7 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions id="modal-actions" class="col-10 d-flex justify-content-end pr-3">
-    <button mat-raised-button class="modal-button col-2 mr-3">Update</button>
+    <button mat-raised-button class="modal-button col-2 mr-3" (click)="updateUsersList()">Update</button>
     <button mat-raised-button class="modal-button col-2 mr-0" mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </div>

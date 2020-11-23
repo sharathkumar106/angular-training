@@ -1,6 +1,6 @@
 import { Admin } from './../../../models/admin.model';
 import { AdminInfoService } from './../../../services/admin-info.service';
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -14,6 +14,7 @@ export class ModalComponent implements OnInit {
   userMode: string;
   adminList: Admin[];
   superAdminList: Admin[];
+  deletedUsersList: Admin[] = [];
 
   newUser: Admin = {
     mode: '',
@@ -39,6 +40,7 @@ export class ModalComponent implements OnInit {
     if (this.userMode === 'Super Admins') {
       this.loadSuperAdminList();
     }
+    console.log('Total Users: ' + this.adminList.length + ' users');
   }
 
   loadAdminList(): void {
@@ -50,16 +52,47 @@ export class ModalComponent implements OnInit {
   }
 
   addNewAdmin(): void {
-    const newAdmin = { ...this.newUser};
-    newAdmin.mode = 'Admin';
-    this.adminInfoService.addNewUser(newAdmin);
-    this.loadAdminList();
+    const newUser = { ...this.newUser };
+    newUser.mode = 'Admin';
+    this.adminList.unshift(newUser);
   }
 
   addNewSuperAdmin(): void {
-    const newAdmin = { ...this.newUser};
-    newAdmin.mode = 'Super Admin';
-    this.adminInfoService.addNewUser(newAdmin);
-    this.loadSuperAdminList();
+    const newUser = { ...this.newUser };
+    newUser.mode = 'Super Admin';
+    this.superAdminList.unshift(newUser);
+  }
+
+  editUser(): void {
+
+  }
+
+  deleteUser(code): void {
+    if (this.userMode === 'Admins') {
+      this.adminList.forEach((user, index) => {
+        if (user.employeeCode === code) {
+          this.adminList.splice(index, 1);
+          this.deletedUsersList.push(user);
+        }
+      });
+    } else {
+      this.superAdminList.forEach((user, index) => {
+        if (user.employeeCode === code) {
+          this.superAdminList.splice(index, 1);
+          this.deletedUsersList.push(user);
+        }
+      });
+    }
+  }
+
+  updateUsersList(): void {
+    if (this.userMode === 'Admins') {
+      this.adminInfoService.addNewUser(this.adminList);
+    } else if (this.userMode === 'Super Admins') {
+      this.adminInfoService.addNewUser(this.superAdminList);
+    }
+    this.deletedUsersList.forEach(user => {
+      this.adminInfoService.removeUser(user);
+    });
   }
 }

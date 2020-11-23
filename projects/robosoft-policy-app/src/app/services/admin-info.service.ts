@@ -50,7 +50,23 @@ export class AdminInfoService {
     return superAdminList;
   }
 
-  addNewUser(newUser: Admin): void {
-    this.admins.unshift(newUser);
+  addNewUser(newUsers: Admin[]): void {
+    newUsers.forEach(user => {
+      if (!this.isExistingUser(user.employeeCode)) {
+        this.admins.unshift(user);
+      }
+    });
+  }
+
+  removeUser(user: Admin): void {
+    this.admins.forEach((admin, index) => {
+      if (admin.employeeCode === user.employeeCode) {
+        this.admins.splice(index, 1);
+      }
+    });
+  }
+
+  isExistingUser(code: string): boolean {
+    return this.admins.findIndex(obj => obj.employeeCode === code) !== -1;
   }
 }
