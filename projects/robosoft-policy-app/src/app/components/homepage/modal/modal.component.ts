@@ -22,6 +22,8 @@ export class ModalComponent implements OnInit {
     mailID: ''
   };
 
+  isEditable = false;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     private adminInfoService: AdminInfoService
@@ -60,7 +62,7 @@ export class ModalComponent implements OnInit {
   }
 
   editUser(): void {
-
+    this.isEditable = !this.isEditable;
   }
 
   deleteUser(code: string): void {
