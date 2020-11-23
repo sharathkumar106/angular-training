@@ -29,15 +29,15 @@
       <div class="row" *ngFor="let admin of adminList || superAdminList">
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Name</mat-label>
-          <input matInput value="{{admin.name}}" [disabled]="!isEditable">
+          <input matInput [(ngModel)]="admin.name" [disabled]="!isEditable">
         </mat-form-field>
         <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
           <mat-label>Enter Employee Code</mat-label>
-          <input matInput value="{{admin.employeeCode}}" [disabled]="!isEditable">
+          <input matInput [(ngModel)]="admin.employeeCode" [disabled]="!isEditable">
         </mat-form-field>
         <mat-form-field appearance="outline" class="col-sm-12 col-md-4 pr-0 pr-md-3">
           <mat-label>Enter Mail ID</mat-label>
-          <input matInput value="{{admin.mailID}}" [disabled]="!isEditable">
+          <input matInput [(ngModel)]="admin.mailID" [disabled]="!isEditable">
         </mat-form-field>
         <div class="col-6 col-md-1 d-flex justify-content-center">
           <button mat-fab (click)="editUser()">

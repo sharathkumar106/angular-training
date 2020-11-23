@@ -61,7 +61,7 @@ export class ModalComponent implements OnInit {
     this.superAdminList.unshift(newUser);
   }
 
-  editUser(): void {
+  editUser(code: string): void {
     this.isEditable = !this.isEditable;
   }
 
