@@ -14,7 +14,6 @@
   &-form {
     margin: 0;
     padding-left: 0;
-    padding-right: 3rem;
 
     &-title {
       opacity: 0.87;
@@ -45,9 +44,14 @@
   &-controls {
     border-left: solid 2px $color-primary;
     max-height: 35rem;
-    // background-color: wheat;
     padding-left: 3rem;
     padding-right: 0;
+
+    @media screen and (max-width: 57.6rem){
+      border-left: none;
+      padding-left: 0;
+      margin-bottom: 3rem;
+    }
 
     .button-control {
       @include customize-mat-button(100%, 5rem, 1rem, #FDF4F6, $color-primary);
@@ -57,6 +61,7 @@
       font-size: 1.4rem;
       font-weight: 500;
       letter-spacing: 1.25px;
+      overflow: hidden;
 
       &:first-child {
         margin-top: 0;
