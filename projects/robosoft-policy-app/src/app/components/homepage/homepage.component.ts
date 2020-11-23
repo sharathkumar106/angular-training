@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openModal(): void {
+  openModal(userMode: string): void {
     const dialogRef = this.matDialog.open(ModalComponent);
     this.isMenuOpen = false;
     dialogRef.afterClosed().subscribe(() => {

@@ -1,31 +1,7 @@
 <div class="container-fluid py-4 px-lg-5">
   <div class="row margin-large">
     <div class="sidebar-container col-12 col-sm-12 col-md-4 col-lg-3 mb-4 mb-md-0 pr-md-0">
-      <div class="sidebar p-3">
-        <div class="sidebar-header my-md-4">
-          <h1 class="sidebar-header-title">Your<br>Questionnaires</h1>
-          <button class="sidebar-header-cta" mat-raised-button>New Questionnaire</button>
-        </div>
-        <div class="sidebar-body">
-          <a mat-button class="sidebar-body-link active">
-            <span class="col-11 col-sm-10">Secure Coding Guidel...</span>
-            <!-- <mat-icon class="col-2" aria-label="Right Chevron Icon">chevron_right</mat-icon> -->
-          </a>
-          <a mat-button class="sidebar-body-link" aria-label="ISMS Questionnaire">
-            <span class="col-11 col-sm-10">ISMS Questionnaire</span>
-            <mat-icon class="col-1 col-sm-2" aria-label="Right Chevron Icon">chevron_right</mat-icon>
-          </a>
-          <a mat-button class="sidebar-body-link" aria-label="ISMS Questionnaire">
-            <span class="col-11 col-sm-10">PA Questionnaire</span>
-            <mat-icon class="col-1 col-sm-2" aria-label="Right Chevron Icon">chevron_right</mat-icon>
-          </a>
-          <a mat-button class="sidebar-body-link" aria-label="ISMS Questionnaire">
-            <span class="col-11 col-sm-10">Process Guidelines</span>
-            <mat-icon class="col-1 col-sm-2" aria-label="Right Chevron Icon">chevron_right</mat-icon>
-          </a>
-
-        </div>
-      </div>
+      <app-sidebar></app-sidebar>
     </div>
     <div class="col-12 col-sm-12 col-md-8 col-lg-9">
       <div class="questionnaire row">
@@ -151,11 +127,13 @@
                   Password</button>
               </li>
               <li>
-                <button mat-raised-button class="overlay-menu-option" (click)="openModal()">Add/Remove Super
+                <button mat-raised-button class="overlay-menu-option" (click)="openModal('Super Admins')">Add/Remove
+                  Super
                   Admins</button>
               </li>
               <li>
-                <button mat-raised-button class="overlay-menu-option" routerLink="/new/admin">Add/Remove Admins</button>
+                <button mat-raised-button class="overlay-menu-option" (click)="openModal('Admins')">Add/Remove
+                  Admins</button>
               </li>
             </ul>
           </div>
