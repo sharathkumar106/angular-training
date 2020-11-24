@@ -17,13 +17,10 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): true | UrlTree {
-    console.log('Checking Login Status');
     if (this.authService.checkLoginStatus()) {
-      console.log('Authenticated - Route is active');
       return true;
     }
     this.authService.redirectURL = url;
-    console.log('Redirecting set to: ' + url);
     return this.router.parseUrl('/login');
   }
 

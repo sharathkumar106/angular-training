@@ -8,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard] },
   { path: 'notification', component: NotificationComponent },
   { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: '', pathMatch: 'full', redirectTo: '/login' }
