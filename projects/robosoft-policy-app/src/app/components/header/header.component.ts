@@ -9,7 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   loginStatus: boolean;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.authService.getLoginStatus.subscribe((status: boolean) => this.loginStatus = status);

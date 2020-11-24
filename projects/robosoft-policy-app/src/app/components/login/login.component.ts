@@ -1,4 +1,3 @@
-import { Login } from '../../models/login';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
@@ -12,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   showMessage = false;
   errorMessage: string;
-  submitted = false;
   loginForm: FormGroup;
   redirectURL: string;
 
