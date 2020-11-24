@@ -16,7 +16,7 @@
         <input matInput type="password" formControlName="password">
         <mat-hint *ngIf="showMessage && form.password.errors?.required">Password is required.</mat-hint>
       </mat-form-field>
-      <button mat-raised-button (click)="submitted = true" [routerLink]="['/homepage']"
+      <button mat-raised-button [routerLink]="['/homepage']"
         routerLinkActive="router-link-active">
         Login
       </button>

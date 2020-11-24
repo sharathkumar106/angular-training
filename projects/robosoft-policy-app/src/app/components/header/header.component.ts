@@ -9,11 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   loginStatus: boolean;
+  username: string;
   constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.authService.getLoginStatus.subscribe((status: boolean) => this.loginStatus = status);
+    this.username = localStorage.getItem('token');
   }
 
   logout(): void {
