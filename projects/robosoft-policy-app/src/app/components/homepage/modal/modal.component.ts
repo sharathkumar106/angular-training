@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit {
     mailID: ''
   };
 
-  isEditable = false;
+  isEditable: boolean[];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
@@ -34,10 +34,13 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     if (this.userMode === 'Admins') {
       this.loadAdminList();
+      this.isEditable = new Array(this.adminList.length).fill(false);
+
     }
 
     if (this.userMode === 'Super Admins') {
       this.loadSuperAdminList();
+      this.isEditable = new Array(this.superAdminList.length).fill(false);
     }
   }
 
@@ -61,8 +64,8 @@ export class ModalComponent implements OnInit {
     this.superAdminList.unshift(newUser);
   }
 
-  editUser(code: string): void {
-    this.isEditable = !this.isEditable;
+  editUser(index: number): void {
+    this.isEditable[index] = !this.isEditable[index];
   }
 
   deleteUser(code: string): void {
