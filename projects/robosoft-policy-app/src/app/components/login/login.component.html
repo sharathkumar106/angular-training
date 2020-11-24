@@ -1,21 +1,28 @@
 <div class="container-fluid">
+  <div class="alert" *ngIf="showMessage">
+    <span class="closebtn" (click)="showMessage = !showMessage">&times;</span>
+    {{errorMessage}}
+  </div>
   <div class="container">
-    <div class="form">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
       <h2 class="form-title">Login</h2>
       <mat-form-field appearance="outline">
         <mat-label>Enter Username</mat-label>
-        <input matInput>
+        <input matInput formControlName="username">
+        <mat-hint *ngIf="showMessage && form.username.errors?.required">Username is required.</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Enter Password</mat-label>
-        <input matInput type="password">
+        <input matInput type="password" formControlName="password">
+        <mat-hint *ngIf="showMessage && form.password.errors?.required">Password is required.</mat-hint>
       </mat-form-field>
-      <button mat-raised-button [routerLink]="['/homepage']" routerLinkActive="router-link-active">
+      <button mat-raised-button (click)="submitted = true" [routerLink]="['/homepage']"
+        routerLinkActive="router-link-active">
         Login
       </button>
       <a class="form-forgot-password" [routerLink]="['/notification']" routerLinkActive="router-link-active">Forgot
         password?</a>
-    </div>
+    </form>
   </div>
 </div>
 <router-outlet></router-outlet>

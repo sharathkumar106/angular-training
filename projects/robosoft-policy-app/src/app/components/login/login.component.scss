@@ -1,5 +1,6 @@
 @import '../../../variables';
 @import '../../../mixins';
+@import '../shared/alert.scss';
 
 .container-fluid {
   background: $background-gradient;
@@ -25,7 +26,7 @@
         font-family: Inter, sans-serif;
         font-weight: 500;
         letter-spacing: 0;
-        margin: 3rem 0;
+        margin: 3rem 0 1rem;
       }
 
       &-forgot-password {

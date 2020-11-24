@@ -1,0 +1,32 @@
+.alert {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 53rem;
+  width: 90%;
+  border-radius: 5px;
+  box-shadow: $container-shadow;
+  background-color: orangered;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  font-family: Inter;
+
+  .closebtn {
+    float: right;
+    margin-left: 1.5rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: inherit;
+    line-height: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+}

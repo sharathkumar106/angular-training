@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './components/login/notification/notification.component';
 import { ResetPasswordComponent } from './components/login/reset-password/reset-password.component';
@@ -9,7 +10,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'notification', component: NotificationComponent },
-  { path: 'homepage', component: HomepageComponent },
+  { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: '', pathMatch: 'full', redirectTo: '/login' }
 ];
 
