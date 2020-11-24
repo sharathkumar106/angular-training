@@ -8,11 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input() showProfile: boolean;
-
+  loginStatus: boolean;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.authService.getLoginStatus.subscribe((status: boolean) => this.loginStatus = status);
   }
 
   logout(): void {

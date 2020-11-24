@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (this.loginForm.invalid) {
-      console.log('Form Invalid: ', this.loginForm.invalid);
       this.showMessage = this.loginForm.invalid;
       this.errorMessage = 'Please fill all the required fields';
       return;
@@ -44,19 +43,13 @@ export class LoginComponent implements OnInit {
       this.showMessage = true;
       this.authService.login(this.form.username.value, this.form.password.value).then(() => {
         if (this.authService.checkLoginStatus()) {
-          console.log('Login successful');
           this.router.navigate([this.authService.redirectURL]);
         }
         else {
           this.showMessage = true;
-          this.errorMessage = 'Login Failed. Please try again';
+          this.errorMessage = 'Login Failed. Check your credentials!';
         }
       });
-
-      // else {
-      //   this.errorMessage = 'Please check your username and password';
-      //   this.showMessage = true;
-      // }
     }
   }
 }
