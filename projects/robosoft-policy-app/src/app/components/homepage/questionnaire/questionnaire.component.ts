@@ -8,7 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class QuestionnaireComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
-
   constructor() {
     this.setDateConstraints();
   }

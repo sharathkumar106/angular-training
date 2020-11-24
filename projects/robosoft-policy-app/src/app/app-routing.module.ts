@@ -10,7 +10,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard] },
   { path: 'notification', component: NotificationComponent },
-  { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard],
+    children: [
+      { path: ':qid', component: HomepageComponent }
+    ]
+  },
   { path: '', pathMatch: 'full', redirectTo: '/login' }
 ];
 
