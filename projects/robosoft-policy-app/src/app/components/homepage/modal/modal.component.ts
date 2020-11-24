@@ -23,6 +23,7 @@ export class ModalComponent implements OnInit {
   };
 
   isEditable: boolean[];
+  updateSuccess: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
@@ -95,5 +96,6 @@ export class ModalComponent implements OnInit {
     this.deletedUsersList.forEach(user => {
       this.adminInfoService.removeUser(user);
     });
+    this.updateSuccess = true;
   }
 }

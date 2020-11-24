@@ -54,6 +54,7 @@
   </mat-dialog-content>
   <mat-dialog-actions id="modal-actions" class="col-10 d-flex justify-content-end pr-3">
     <button mat-raised-button class="modal-button col-2 mr-3" (click)="updateUsersList()">Update</button>
-    <button mat-raised-button class="modal-button col-2 mr-0" mat-dialog-close>Cancel</button>
+    <button mat-raised-button class="modal-button col-2 mr-0"
+      mat-dialog-close>{{ updateSuccess ? 'Close' : 'Cancel'}}</button>
   </mat-dialog-actions>
 </div>
