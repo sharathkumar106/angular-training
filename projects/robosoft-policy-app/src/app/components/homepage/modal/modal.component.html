@@ -6,19 +6,19 @@
     <div class="form-add-user">
       <h2 mat-dialog-title>Add/Remove {{ userMode }}</h2>
       <div class="row">
-        <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
+        <mat-form-field appearance="outline" class="col-sm-6 col-xl-3 pr-0">
           <mat-label>Enter Name</mat-label>
           <input matInput [(ngModel)]="newUser.name">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
+        <mat-form-field appearance="outline" class="col-sm-6 col-xl-3 pr-0">
           <mat-label>Enter Employee Code</mat-label>
           <input matInput [(ngModel)]="newUser.employeeCode">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="col-sm-12 col-md-4 pr-0 pr-md-3">
+        <mat-form-field appearance="outline" class="col-sm-12 col-xl-4 pr-0 pr-md-3">
           <mat-label>Enter Mail ID</mat-label>
           <input matInput [(ngModel)]="newUser.mailID">
         </mat-form-field>
-        <div class="col-12 col-md-1 d-flex justify-content-center">
+        <div class="col-12 col-xl-1 mb-3 mb-xl-0 d-flex justify-content-center">
           <button mat-fab (click)="userMode==='Admins' ? addNewAdmin() : addNewSuperAdmin()">
             <mat-icon>add</mat-icon>
           </button>
@@ -26,25 +26,25 @@
       </div>
     </div>
     <div class="form-edit-user">
-      <div class="row" *ngFor="let admin of adminList || superAdminList; let i = index;">
-        <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
+      <div class="row mb-5 pb-lg-0" *ngFor="let admin of adminList || superAdminList; let i = index;">
+        <mat-form-field appearance="outline" class="col-sm-6 col-xl-3 pr-0">
           <mat-label>Enter Name</mat-label>
           <input matInput [(ngModel)]="admin.name" [disabled]="!isEditable[i]">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="col-sm-6 col-md-3 pr-0">
+        <mat-form-field appearance="outline" class="col-sm-6 col-xl-3 pr-0">
           <mat-label>Enter Employee Code</mat-label>
           <input matInput [(ngModel)]="admin.employeeCode" [disabled]="!isEditable[i]">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="col-sm-12 col-md-4 pr-0 pr-md-3">
+        <mat-form-field appearance="outline" class="col-sm-12 col-xl-4 pr-0 pr-md-3">
           <mat-label>Enter Mail ID</mat-label>
           <input matInput [(ngModel)]="admin.mailID" [disabled]="!isEditable[i]">
         </mat-form-field>
-        <div class="col-6 col-md-1 d-flex justify-content-center">
+        <div class="col-6 col-xl-1 d-flex justify-content-center">
           <button mat-fab (click)="editUser(i)">
             <mat-icon>edit</mat-icon>
           </button>
         </div>
-        <div class="col-6 col-md-1 d-flex justify-content-center">
+        <div class="col-6 col-xl-1 d-flex justify-content-center">
           <button mat-fab (click)="deleteUser(admin.employeeCode)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -53,8 +53,8 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions id="modal-actions" class="col-10 d-flex justify-content-end pr-3">
-    <button mat-raised-button class="modal-button col-2 mr-3" (click)="updateUsersList()">Update</button>
-    <button mat-raised-button class="modal-button col-2 mr-0"
+    <button mat-raised-button class="modal-button col-sm-6 col-xl-2 mr-xl-3 mb-3 mb-xl-0" (click)="updateUsersList()">Update</button>
+    <button mat-raised-button class="modal-button col-sm-6 col-xl-2 mr-xl-0 ml-0 ml-sm-3"
       mat-dialog-close>{{ updateSuccess ? 'Close' : 'Cancel'}}</button>
   </mat-dialog-actions>
 </div>
