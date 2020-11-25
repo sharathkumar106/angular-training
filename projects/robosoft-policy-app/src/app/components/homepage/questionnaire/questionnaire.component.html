@@ -1,49 +1,54 @@
 <div class="questionnaire row">
   <div class="questionnaire-form col-sm-8 pr-0 pr-sm-5">
-    <div class="questionnaire-form-main">
+    <form class="questionnaire-form-main" [formGroup]="MainQuestionnaire">
       <h2 class="questionnaire-form-title">Questionnaire</h2>
       <div class="mat-input-group">
         <mat-form-field appearance="outline">
           <mat-label>Enter Title</mat-label>
-          <input matInput>
-          <mat-hint>Please enter appropriate title</mat-hint>
+          <input matInput formControlName="Title">
+          <mat-hint *ngIf="formSubmitted && MainForm.Title.errors?.required">Please enter appropriate Title</mat-hint>
         </mat-form-field>
       </div>
       <div class="mat-input-group">
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput rows="3"
-            value="These Guidelines helps you to code in a secure manner which would assist in keeping the product data safe"></textarea>
+          <textarea matInput formControlName="Description" rows="3"></textarea>
         </mat-form-field>
       </div>
       <div class="row">
         <div class="mat-input-group col-6">
           <mat-form-field appearance="outline">
             <mat-label>Button Title</mat-label>
-            <input matInput value="I Accept">
+            <input matInput formControlName="ButtonTitle">
+            <mat-hint *ngIf="formSubmitted && MainForm.ButtonTitle.errors?.required">Please enter a Button Title
+            </mat-hint>
           </mat-form-field>
         </div>
         <div class="mat-input-group col-6">
           <mat-form-field appearance="outline">
             <mat-label>Button Text</mat-label>
-            <input matInput value="I have read the guidelines">
+            <input matInput formControlName="ButtonText">
+            <mat-hint *ngIf="formSubmitted && MainForm.ButtonText.errors?.required">Please enter a Button Text
+            </mat-hint>
           </mat-form-field>
         </div>
       </div>
       <div class="mat-input-group">
         <mat-form-field appearance="outline">
           <mat-label>Check Box Text</mat-label>
-          <input matInput value="I have read the guidelines">
+          <input matInput formControlName="CheckBoxText">
+          <mat-hint *ngIf="formSubmitted && MainForm.CheckBoxText.errors?.required">Please enter a Check Box Text</mat-hint>
         </mat-form-field>
       </div>
-    </div>
-    <div class="questionnaire-form-additional">
+    </form>
+    <form class="questionnaire-form-additional" [formGroup]="AdditionalQuestionnaire">
       <h2 class="questionnaire-form-title">Additional Details</h2>
       <div class="row">
         <div class="mat-input-group col-4">
           <mat-form-field appearance="outline">
             <mat-label>Select Start Date</mat-label>
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="start">
+            <input matInput formControlName="StartDate" [min]="minDate" [max]="maxDate" [matDatepicker]="start">
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.StartDate.errors?.required">Please enter a Start Date</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="start" class="input-suffix-date"></mat-datepicker-toggle>
             <mat-datepicker #start></mat-datepicker>
           </mat-form-field>
@@ -51,7 +56,8 @@
         <div class="mat-input-group col-4">
           <mat-form-field appearance="outline">
             <mat-label>Select End Date</mat-label>
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="end">
+            <input matInput formControlName="EndDate" [min]="minDate" [max]="maxDate" [matDatepicker]="end">
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.EndDate.errors?.required">Please enter an End Date</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="end" class="input-suffix-date"></mat-datepicker-toggle>
             <mat-datepicker #end></mat-datepicker>
           </mat-form-field>
@@ -59,7 +65,8 @@
         <div class="mat-input-group col-4">
           <mat-form-field appearance="outline">
             <mat-label>Auto Reminder</mat-label>
-            <input matInput>
+            <input matInput formControlName="AutoReminder">
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.AutoReminder.errors?.required">Please enter an Auto Reminder</mat-hint>
             <span matSuffix class="input-suffix-days">Days</span>
           </mat-form-field>
         </div>
@@ -85,14 +92,13 @@
       <div class="mat-input-group mb-0">
         <mat-form-field appearance="outline">
           <mat-label>Mail Body</mat-label>
-          <textarea matInput rows="4">Hello <Name> You are hear-by invited to read and accept the terms and conditions by clicking on the following link<link>
-			</textarea>
+          <textarea matInput formControlName="MailBody" rows="4"></textarea>
         </mat-form-field>
       </div>
-    </div>
+    </form>
   </div>
   <div class="questionnaire-controls col-sm-4 mt-sm-3">
-    <button class="button-control" mat-button>
+    <button class="button-control" mat-button (click)="onSave()">
       <mat-icon>save</mat-icon>Save
     </button>
     <button class="button-control" mat-button>
