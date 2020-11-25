@@ -4,6 +4,7 @@
 @import './variables';
 @import './mixins';
 
+// Customizations
 @include customize-material-input($custom-input-color, $custom-label-color, $custom-outline-color);
 @include customize-mat-date-picker();
 @include customize-mat-file-input();

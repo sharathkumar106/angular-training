@@ -7,6 +7,7 @@ import { Login } from '../models/login.model';
 })
 export class AuthService {
 
+  // DUMMY USERS
   users = [
     {
       username: 'admin',
@@ -26,7 +27,6 @@ export class AuthService {
 
   validateUser(username: string, password: string): boolean {
     if (this.users.findIndex((user) => user.username === username && user.password === password) !== -1) {
-      console.log(username, password);
       return true;
     }
     return false;

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AdminInfoService {
 
+  // DUMMY ADMINS
   admins = [
     {
       mode: 'Admin',
@@ -50,6 +51,7 @@ export class AdminInfoService {
     return superAdminList;
   }
 
+  // Add Admin or Super Admin
   addNewUser(newUsers: Admin[]): void {
     newUsers.forEach(user => {
       if (!this.isExistingUser(user.employeeCode)) {
@@ -58,6 +60,7 @@ export class AdminInfoService {
     });
   }
 
+  // Remove Admin or Super Admin
   removeUser(user: Admin): void {
     this.admins.forEach((admin, index) => {
       if (admin.employeeCode === user.employeeCode) {
@@ -66,6 +69,7 @@ export class AdminInfoService {
     });
   }
 
+  // Check if Admin or Super Admin exist
   isExistingUser(code: string): boolean {
     return this.admins.findIndex(obj => obj.employeeCode === code) !== -1;
   }

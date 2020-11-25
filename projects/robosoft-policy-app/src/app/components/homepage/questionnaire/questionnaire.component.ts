@@ -11,6 +11,7 @@ export class QuestionnaireComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
 
+  // Dummy Form Data
   formData: Forms = {
     Title: '',
     Description: 'These Guidelines helps you to code in a secure manner which would assist in keeping the product data safe',
@@ -61,18 +62,9 @@ export class QuestionnaireComponent implements OnInit {
     return this.AdditionalQuestionnaire.controls;
   }
 
-  // Set the minimum to January 1st 20 years in the past and December 31st 10 years in the future.
-  setDateConstraints(): void {
-    const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 20, 0, 1);
-    this.maxDate = new Date(currentYear + 10, 11, 31);
-  }
-
   onSave(): void {
     this.formSubmitted = true;
-    if (this.MainQuestionnaire.invalid || this.AdditionalQuestionnaire.invalid) {
-      console.log('Please fill all the fields!');
-    } else {
+    if (!this.MainQuestionnaire.invalid || !this.AdditionalQuestionnaire.invalid) {
       this.formData.ContentPPT = this.AdditionalForm.ContentPPT.value || '';
       this.formData.ParticipantsList = this.AdditionalForm.ParticipantsList.value || '';
       this.dataSaved = true;
@@ -80,4 +72,10 @@ export class QuestionnaireComponent implements OnInit {
     }
   }
 
+  // Set the minimum to January 1st 20 years in the past and December 31st 10 years in the future.
+  setDateConstraints(): void {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date(currentYear + 10, 11, 31);
+  }
 }

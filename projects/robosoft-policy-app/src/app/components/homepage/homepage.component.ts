@@ -12,12 +12,9 @@ export class HomepageComponent implements OnInit {
   isOverlayOpen = false;
   isMenuOpen = false;
 
-  constructor(private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog) { }
 
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   openModal(userMode: string): void {
     const dialogConfig = new MatDialogConfig();
@@ -30,5 +27,4 @@ export class HomepageComponent implements OnInit {
       this.isMenuOpen = true;
     });
   }
-
 }

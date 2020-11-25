@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
