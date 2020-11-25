@@ -1,6 +1,7 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Forms } from './../../../models/forms.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { FileValidator } from 'ngx-material-file-input';
 
 @Component({
   selector: 'app-questionnaire',
@@ -46,8 +47,8 @@ export class QuestionnaireComponent implements OnInit {
       StartDate: [this.formData.StartDate, Validators.required],
       EndDate: [this.formData.EndDate, Validators.required],
       AutoReminder: [this.formData.AutoReminder, Validators.required],
-      ContentPPT: [undefined, Validators.required, FileValidator.],
-      ParticipantsList: [this.formData.ParticipantsList],
+      ContentPPT: [this.formData.ContentPPT, FileValidator.maxContentSize(this.maxSize)],
+      ParticipantsList: [this.formData.ParticipantsList, FileValidator.maxContentSize(this.maxSize)],
       MailBody: [this.formData.MailBody, Validators.required]
     });
   }
@@ -72,6 +73,8 @@ export class QuestionnaireComponent implements OnInit {
     if (this.MainQuestionnaire.invalid || this.AdditionalQuestionnaire.invalid) {
       console.log('Please fill all the fields!');
     } else {
+      this.formData.ContentPPT = this.AdditionalForm.ContentPPT.value || '';
+      this.formData.ParticipantsList = this.AdditionalForm.ParticipantsList.value || '';
       console.log(this.formData);
     }
   }
