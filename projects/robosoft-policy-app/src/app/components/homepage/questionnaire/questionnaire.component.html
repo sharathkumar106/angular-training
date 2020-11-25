@@ -37,7 +37,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Check Box Text</mat-label>
           <input matInput formControlName="CheckBoxText">
-          <mat-hint *ngIf="formSubmitted && MainForm.CheckBoxText.errors?.required">Please enter a Check Box Text</mat-hint>
+          <mat-hint *ngIf="formSubmitted && MainForm.CheckBoxText.errors?.required">Please enter a Check Box Text
+          </mat-hint>
         </mat-form-field>
       </div>
     </form>
@@ -48,7 +49,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Select Start Date</mat-label>
             <input matInput formControlName="StartDate" [min]="minDate" [max]="maxDate" [matDatepicker]="start">
-            <mat-hint *ngIf="formSubmitted && AdditionalForm.StartDate.errors?.required">Please enter a Start Date</mat-hint>
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.StartDate.errors?.required">Please enter a Start Date
+            </mat-hint>
             <mat-datepicker-toggle matSuffix [for]="start" class="input-suffix-date"></mat-datepicker-toggle>
             <mat-datepicker #start></mat-datepicker>
           </mat-form-field>
@@ -57,7 +59,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Select End Date</mat-label>
             <input matInput formControlName="EndDate" [min]="minDate" [max]="maxDate" [matDatepicker]="end">
-            <mat-hint *ngIf="formSubmitted && AdditionalForm.EndDate.errors?.required">Please enter an End Date</mat-hint>
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.EndDate.errors?.required">Please enter an End Date
+            </mat-hint>
             <mat-datepicker-toggle matSuffix [for]="end" class="input-suffix-date"></mat-datepicker-toggle>
             <mat-datepicker #end></mat-datepicker>
           </mat-form-field>
@@ -66,7 +69,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Auto Reminder</mat-label>
             <input matInput formControlName="AutoReminder">
-            <mat-hint *ngIf="formSubmitted && AdditionalForm.AutoReminder.errors?.required">Please enter an Auto Reminder</mat-hint>
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.AutoReminder.errors?.required">Please enter an Auto
+              Reminder</mat-hint>
             <span matSuffix class="input-suffix-days">Days</span>
           </mat-form-field>
         </div>
@@ -78,6 +82,8 @@
             <ngx-mat-file-input [multiple]=false [accept]="'.ppt,.pptx'" formControlName="ContentPPT">
               <mat-icon ngxMatFileInputIcon class="input-suffix-file">cloud_upload</mat-icon>
             </ngx-mat-file-input>
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.ContentPPT.errors?.required">Please upload the Content PPT
+            </mat-hint>
           </mat-form-field>
         </div>
         <div class="mat-input-group col-6">
@@ -86,6 +92,8 @@
             <ngx-mat-file-input [multiple]=false [accept]="'.xls,.xlsx,.doc,.docx'" formControlName="ParticipantsList">
               <mat-icon ngxMatFileInputIcon class="input-suffix-file">cloud_upload</mat-icon>
             </ngx-mat-file-input>
+            <mat-hint *ngIf="formSubmitted && AdditionalForm.ParticipantsList.errors?.required">Please upload the
+              Participants List</mat-hint>
           </mat-form-field>
         </div>
       </div>
@@ -99,7 +107,7 @@
   </div>
   <div class="questionnaire-controls col-sm-4 mt-sm-3">
     <button class="button-control" mat-button (click)="onSave()">
-      <mat-icon>save</mat-icon>Save
+      <mat-icon>save</mat-icon>{{dataSaved ? 'Saved!' : 'Save'}}
     </button>
     <button class="button-control" mat-button>
       <mat-icon>preview</mat-icon>Preview

@@ -10,7 +10,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class QuestionnaireComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
-  readonly maxSize = 104857600; // 100 MB
 
   formData: Forms = {
     Title: '',
@@ -25,7 +24,9 @@ export class QuestionnaireComponent implements OnInit {
     ParticipantsList: undefined,
     MailBody: 'Hello <Name> You are hear-by invited to read and accept the terms and conditions by clicking on the following link <link>'
   };
+
   formSubmitted = false;
+  dataSaved = false;
 
   MainQuestionnaire: FormGroup;
   AdditionalQuestionnaire: FormGroup;
@@ -46,8 +47,8 @@ export class QuestionnaireComponent implements OnInit {
       StartDate: [this.formData.StartDate, Validators.required],
       EndDate: [this.formData.EndDate, Validators.required],
       AutoReminder: [this.formData.AutoReminder, Validators.required],
-      ContentPPT: [this.formData.ContentPPT],
-      ParticipantsList: [this.formData.ParticipantsList],
+      ContentPPT: [this.formData.ContentPPT, Validators.required],
+      ParticipantsList: [this.formData.ParticipantsList, Validators.required],
       MailBody: [this.formData.MailBody, Validators.required]
     });
   }
@@ -74,6 +75,7 @@ export class QuestionnaireComponent implements OnInit {
     } else {
       this.formData.ContentPPT = this.AdditionalForm.ContentPPT.value || '';
       this.formData.ParticipantsList = this.AdditionalForm.ParticipantsList.value || '';
+      this.dataSaved = true;
       console.log(this.formData);
     }
   }
