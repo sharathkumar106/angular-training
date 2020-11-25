@@ -1,7 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Forms } from './../../../models/forms.model';
 import { Component, Input, OnInit } from '@angular/core';
-import { FileValidator } from 'ngx-material-file-input';
 
 @Component({
   selector: 'app-questionnaire',
@@ -22,8 +21,8 @@ export class QuestionnaireComponent implements OnInit {
     StartDate: new Date(2020, 0, 1),
     EndDate: new Date(2021, 0, 1),
     AutoReminder: 5,
-    ContentPPT: '',
-    ParticipantsList: '',
+    ContentPPT: undefined,
+    ParticipantsList: undefined,
     MailBody: 'Hello <Name> You are hear-by invited to read and accept the terms and conditions by clicking on the following link <link>'
   };
   formSubmitted = false;
@@ -47,8 +46,8 @@ export class QuestionnaireComponent implements OnInit {
       StartDate: [this.formData.StartDate, Validators.required],
       EndDate: [this.formData.EndDate, Validators.required],
       AutoReminder: [this.formData.AutoReminder, Validators.required],
-      ContentPPT: [this.formData.ContentPPT, FileValidator.maxContentSize(this.maxSize)],
-      ParticipantsList: [this.formData.ParticipantsList, FileValidator.maxContentSize(this.maxSize)],
+      ContentPPT: [this.formData.ContentPPT],
+      ParticipantsList: [this.formData.ParticipantsList],
       MailBody: [this.formData.MailBody, Validators.required]
     });
   }
