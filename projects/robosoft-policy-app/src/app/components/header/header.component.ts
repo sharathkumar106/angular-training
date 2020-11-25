@@ -14,8 +14,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getLoginStatus.subscribe((status: boolean) => this.loginStatus = status);
-    this.username = localStorage.getItem('token');
+    this.authService.getLoginStatus.subscribe((status: boolean) => {
+      this.loginStatus = status;
+      this.username = localStorage.getItem('token');
+    });
   }
 
   logout(): void {
