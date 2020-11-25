@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="form-edit-user">
-      <div class="row mb-5 pb-lg-0" *ngFor="let admin of adminList || superAdminList; let i = index;">
+      <div class="row mb-4 mb-xl-0" *ngFor="let admin of adminList || superAdminList; let i = index;">
         <mat-form-field appearance="outline" class="col-sm-6 col-xl-3 pr-0">
           <mat-label>Enter Name</mat-label>
           <input matInput [(ngModel)]="admin.name" [disabled]="!isEditable[i]">
