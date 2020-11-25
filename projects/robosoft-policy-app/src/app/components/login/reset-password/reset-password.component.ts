@@ -31,8 +31,11 @@ export class ResetPasswordComponent implements OnInit {
     else if (this.newPassword === this.currentUser.password) {
       this.invalidPasswordText = 'New Password cannot be same as old password!';
     }
+    else if (!this.newPassword || !this.confirmPassword) {
+      this.invalidPasswordText = 'Please enter a password!';
+    }
     else {
-      alert('Reset Successful! Please login to continue');
+      alert('Password Reset Successful!\nPlease login to continue');
       this.authService.updatePassword(this.currentUser.username, this.newPassword);
       this.authService.logout();
       this.router.navigate(['/login']);
