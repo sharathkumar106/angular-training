@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-
+  showMessage = false;
   newPassword: string;
   confirmPassword: string;
-  invalidPasswordText = '';
+  errorMessage = '';
   currentUser: Login;
 
   constructor(
@@ -26,16 +26,20 @@ export class ResetPasswordComponent implements OnInit {
 
   validatePasswordMatch(): void {
     if (this.newPassword !== this.confirmPassword) {
-      this.invalidPasswordText = 'Passwords do not match. Please try again';
+      this.errorMessage = 'Passwords do not match. Please try again';
+      this.showMessage = true;
     }
     else if (this.newPassword === this.currentUser.password) {
-      this.invalidPasswordText = 'New Password cannot be same as old password!';
+      this.errorMessage = 'New Password cannot be same as old password!';
+      this.showMessage = true;
     }
     else if (!this.newPassword || !this.confirmPassword) {
-      this.invalidPasswordText = 'Please enter a password!';
+      this.errorMessage = 'Please enter a password!';
+      this.showMessage = true;
     }
     else {
-      alert('Password Reset Successful!\nPlease login to continue');
+      this.errorMessage = 'Password Reset Successful! Please login to continue';
+      this.showMessage = true;
       this.authService.updatePassword(this.currentUser.username, this.newPassword);
       this.authService.logout();
       this.router.navigate(['/login']);
