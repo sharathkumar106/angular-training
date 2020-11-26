@@ -38,11 +38,13 @@ export class ResetPasswordComponent implements OnInit {
       this.showMessage = true;
     }
     else {
-      this.errorMessage = 'Password Reset Successful! Please login to continue';
-      this.showMessage = true;
       this.authService.updatePassword(this.currentUser.username, this.newPassword);
-      this.authService.logout();
-      this.router.navigate(['/login']);
+      this.errorMessage = 'Password Reset Successful! Redirecting to Login...';
+      this.showMessage = true;
+      setTimeout(() => {
+        this.authService.logout();
+        this.router.navigate(['/login']);
+      }, 2000);
     }
   }
 }
