@@ -103,6 +103,9 @@
   .mat-form-field-suffix .mat-icon-button {
     color: $color-primary !important;
   }
+  .mat-calendar-body-selected {
+    background-color: $color-primary !important;
+  }
 }
 
 @mixin customize-mat-file-input {
