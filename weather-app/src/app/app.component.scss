@@ -13,5 +13,14 @@
     height: calc(100vh - 10.625rem);
     width: calc(100vw - 12rem);
     padding: 0 1.5rem;
+
+    @media screen and (max-width: 740px) {
+      height: calc(85vh - 2.5rem);
+      width: 100%;
+      padding: 0;
+      top: calc(15vh + 2.5rem);
+      left: 0;
+      right: 0;
+    }
   }
 }

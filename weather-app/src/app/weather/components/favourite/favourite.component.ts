@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favourite.component.scss']
 })
 export class FavouriteComponent implements OnInit {
-
+  noDataFound = true;
   constructor() { }
 
   ngOnInit(): void {

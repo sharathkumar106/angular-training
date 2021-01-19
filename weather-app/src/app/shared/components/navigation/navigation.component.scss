@@ -10,6 +10,15 @@
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (max-width: 740px) {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15vh;
+    border: none;
+  }
+
   &-list {
     display: inline-flex;
     min-width: 25rem;
@@ -21,6 +30,10 @@
 
     list-style: none;
     overflow: hidden;
+
+    @media screen and (max-width: 740px) {
+      display: none;
+    }
   }
 
   &-item {
@@ -54,5 +67,19 @@
     letter-spacing: 0;
     line-height: 2.5rem;
     text-align: right;
+    margin-right: .625rem;
+
+    @media screen and (max-width: 740px) {
+      height: 15px;
+      max-width: 100%;
+      width: 100%;
+      color: #FFFFFF99;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      line-height: 15px;
+      text-align: center;
+      margin: 0;
+      text-transform: uppercase;
+    }
   }
 }

@@ -1,1 +1,2 @@
-<p>favourite works!</p>
+<p *ngIf="!noDataFound">favourite works!</p>
+<app-no-data-found *ngIf="noDataFound" [message]="'No Favourites added'"></app-no-data-found>
