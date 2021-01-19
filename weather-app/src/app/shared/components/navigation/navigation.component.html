@@ -1,0 +1,10 @@
+<div class="navigation">
+  <ul class="navigation-list">
+    <li class="navigation-item" [routerLink]="['../home']" routerLinkActive="active">Home</li>
+    <li class="navigation-item" [routerLink]="['../favourite']" routerLinkActive="active">Favourite</li>
+    <li class="navigation-item" [routerLink]="['../recent-search']" routerLinkActive="active">Recent Search</li>
+  </ul>
+  <p class="navigation-date">
+    {{date | date: 'medium'}}
+  </p>
+</div>

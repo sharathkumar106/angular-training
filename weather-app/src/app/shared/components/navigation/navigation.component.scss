@@ -1,0 +1,58 @@
+.navigation {
+  width: calc(100vw - 15rem);
+  height: 2.5rem;
+  position: absolute;
+  top: 7rem;
+  left: 7.5rem;
+  right: 7.5rem;
+  border-bottom: solid 1px rgba(#ffffff, .3);
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-list {
+    display: inline-flex;
+    min-width: 25rem;
+    height: 2.5rem;
+
+    font-family: inherit;
+    font-size: inherit;
+    text-transform: uppercase;
+
+    list-style: none;
+    overflow: hidden;
+  }
+
+  &-item {
+    display: inline-block;
+    height: 2.5rem;
+    width: auto;
+    margin-right: 1rem;
+    padding: 0 1rem;
+    color: #FFFFFF;
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 3rem;
+    text-align: center;
+    cursor: pointer;
+
+    :last-child {
+      margin-right: 0;
+    }
+
+    &.active {
+      border-bottom: solid 2px #FFD639;
+      color: #FFD639;
+    }
+  }
+
+  &-date {
+    height: 2.5rem;
+    max-width: 25rem;
+    color: #FFFFFF;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 2.5rem;
+    text-align: right;
+  }
+}
