@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'weather-app';
+  showMenu = false;
+  searchValue: string;
+
+  onSearch(searchItem: string): void {
+    this.searchValue = searchItem;
+    console.log(searchItem);
+  }
 }

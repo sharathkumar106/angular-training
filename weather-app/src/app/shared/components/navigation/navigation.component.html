@@ -5,6 +5,17 @@
     <li class="navigation-item" [routerLink]="['../recent-search']" routerLinkActive="active">Recent Search</li>
   </ul>
   <p class="navigation-date">
-    {{date | date: 'medium'}}
+    {{date | date: 'EEE, dd MMM yyyy hh:mm aa' | uppercase}}
   </p>
+
+  <div class="sidebar" *ngIf="show">
+    <div class="overlay" (click)="onClose()"></div>
+    <ul class="sidebar-list">
+      <li class="sidebar-item" [routerLink]="['../home']" routerLinkActive="active" (click)="onClose()">Home</li>
+      <li class="sidebar-item" [routerLink]="['../favourite']" routerLinkActive="active" (click)="onClose()">Favourite
+      </li>
+      <li class="sidebar-item" [routerLink]="['../recent-search']" routerLinkActive="active" (click)="onClose()">Recent
+        Search</li>
+    </ul>
+  </div>
 </div>

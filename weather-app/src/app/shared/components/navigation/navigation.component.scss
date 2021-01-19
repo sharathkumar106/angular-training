@@ -82,4 +82,48 @@
       text-transform: uppercase;
     }
   }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+
+    &-list {
+      position: relative;
+      width: 75vw;
+      height: 100vh;
+      background-color: #ffffff;
+      padding: 2rem;
+      font-family: Roboto;
+      font-size: 14px;
+      letter-spacing: 0;
+      z-index: 1000;
+      list-style: none;
+    }
+
+    &-item {
+      color: #707070;
+      line-height: 2.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+
+      &.active {
+        color: #202020;
+        font-weight: 500;
+
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #00000077;
+    }
+  }
 }

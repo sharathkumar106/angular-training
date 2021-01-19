@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   exports: [
-    BrowserModule
+    BrowserModule,
   ]
 })
 export class CoreModule { }

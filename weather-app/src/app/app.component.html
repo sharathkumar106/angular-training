@@ -1,6 +1,6 @@
 <div class="container-fluid weather">
-  <app-header></app-header>
-  <app-navigation></app-navigation>
+  <app-header (isMenuClicked)="showMenu = !showMenu" (searchValue)="onSearch($event)"></app-header>
+  <app-navigation [show]="showMenu" (closeMenu)="showMenu = !showMenu"></app-navigation>
   <div class="weather-wrapper">
     <router-outlet></router-outlet>
   </div>

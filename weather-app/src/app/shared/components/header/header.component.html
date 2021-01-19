@@ -3,7 +3,23 @@
     <img src="assets/logo/logo_web/logo_web.png" alt="Weather App Logo">
   </div>
   <div class="header-search">
-    <input class="header-search-control" type="text" id="search" placeholder="Search City">
-    <label class="header-search-icon" for="search">&copy;</label>
+    <input class="header-search-control" type="text" id="search" placeholder="Search City" name="search"
+      [formControl]="search">
+    <label for="search">
+      <img class="header-search-icon" src="assets/icons-responsive/icon_search_white.png" alt="Search Icon"
+        (click)="onSearch()">
+    </label>
   </div>
+</header>
+<header class="resp-header">
+  <div class="resp-header-wrapper" *ngIf="!searchMode">
+    <img class="resp-header-menu" src="assets/icons-responsive/icon_menu_white.png" alt="Menu Icon" (click)="onClick()">
+    <img class="resp-header-logo" src="assets/logo/logo_web/logo_web.png" alt="Weather App Logo">
+  </div>
+  <div class="header-search resp" *ngIf="searchMode">
+    <input class="header-search-control resp" type="text" id="search" placeholder="Search City" name="search"
+      [formControl]="search">
+  </div>
+  <img class="resp-header-search-icon" src="assets/icons-responsive/icon_search_white.png" alt="Search Icon"
+    (click)="onSearch()">
 </header>
