@@ -1,1 +1,8 @@
-<p>recent-search works!</p>
+<ng-container *ngIf="!noDataFound">
+  <div class="search">
+    <p class="search-count">You recently searched for</p>
+    <p class="search-remove" (click)="onClear()">Clear All</p>
+  </div>
+  <app-table></app-table>
+</ng-container>
+<app-no-data-found *ngIf="noDataFound" [message]="'No Recent Search'"></app-no-data-found>

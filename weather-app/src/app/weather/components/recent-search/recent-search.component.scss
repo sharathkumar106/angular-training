@@ -1,0 +1,26 @@
+.search {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1rem;
+    padding: 0 .625rem;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 0.81rem;
+    letter-spacing: 0;
+    line-height: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .2s ease;
+  
+    &-remove {
+      cursor: pointer;
+  
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+  }
+  

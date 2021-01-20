@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recent-search.component.scss']
 })
 export class RecentSearchComponent implements OnInit {
-
+  noDataFound = false;
+  searchHistory: any[];
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClear(): void {
+    this.searchHistory = undefined;
+    this.noDataFound = true;
   }
 
 }
