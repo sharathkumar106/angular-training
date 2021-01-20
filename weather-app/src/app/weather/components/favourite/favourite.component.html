@@ -1,2 +1,8 @@
-<p *ngIf="!noDataFound">favourite works!</p>
+<ng-container *ngIf="!noDataFound">
+  <div class="favourite">
+    <p class="favourite-count">3 City added as favourite</p>
+    <p class="favourite-remove" (click)="onClear()">Remove All</p>
+  </div>
+  <app-table></app-table>
+</ng-container>
 <app-no-data-found *ngIf="noDataFound" [message]="'No Favourites added'"></app-no-data-found>

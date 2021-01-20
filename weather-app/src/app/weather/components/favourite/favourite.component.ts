@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favourite.component.scss']
 })
 export class FavouriteComponent implements OnInit {
-  noDataFound = true;
+  noDataFound = false;
+  favourites: any[];
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClear(): void {
+    this.favourites = undefined;
+    this.noDataFound = true;
   }
 
 }

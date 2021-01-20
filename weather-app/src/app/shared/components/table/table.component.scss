@@ -1,0 +1,72 @@
+.table {
+  position: absolute;
+  top: 3.375rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  list-style: none;
+
+  &-item {
+    height: 4.5rem;
+    width: 100%;
+    background: #ffffff33;
+    margin-bottom: 1px;
+    padding: 1rem;
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-location {
+      height: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      flex: 2;
+    }
+
+    .wrapper {
+      flex: 3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &-weather-icon {
+      height: 2.25rem;
+      width: 2.25rem;
+      margin-right: 1.75rem;
+    }
+
+    &-value {
+      height: 2.25rem;
+      font-size: 2rem;
+      line-height: 2.25rem;
+      margin-right: 4px;
+    }
+
+    &-unit {
+      height: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.25rem;
+    }
+
+    &-condition {
+      height: 1.25rem;
+      font-size: 1.125rem;
+      line-height: 1.25rem;
+      margin-left: 2rem;
+    }
+
+    &-fav-icon {
+      margin-right: 1rem;
+    }
+
+    &.active>&-location {
+      color: #FFE539;
+    }
+
+
+  }
+}
