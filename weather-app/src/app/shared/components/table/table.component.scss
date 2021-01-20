@@ -5,6 +5,10 @@
   right: 1.5rem;
   list-style: none;
 
+  @media screen and (max-width: 720px) {
+    padding: 0 .625rem;
+  }
+
   &-item {
     height: 4.5rem;
     width: 100%;
@@ -12,18 +16,34 @@
     margin-bottom: 1px;
     padding: 1rem;
     font-family: Roboto;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0;
     color: #ffffff;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
+    transition: all .1s ease-in;
+
+    @media screen and (max-width: 720px) {
+      height: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
 
     &-location {
       height: 1.25rem;
       font-size: 1rem;
       line-height: 1.25rem;
+      font-weight: 500;
       flex: 2;
+
+      @media screen and (max-width: 720px) {
+        color: #FFE539;
+      }
+
     }
 
     .wrapper {
@@ -31,12 +51,22 @@
       display: inline-flex;
       align-items: center;
       justify-content: flex-start;
+
+      @media screen and (max-width: 720px) {
+        margin-top: .5rem;
+      }
     }
 
     &-weather-icon {
       height: 2.25rem;
       width: 2.25rem;
       margin-right: 1.75rem;
+
+      @media screen and (max-width: 720px) {
+        height: 1.375rem;
+        width: 1.375rem;
+        margin-right: .5rem;
+      }
     }
 
     &-value {
@@ -44,6 +74,14 @@
       font-size: 2rem;
       line-height: 2.25rem;
       margin-right: 4px;
+      font-weight: 500;
+
+      @media screen and (max-width: 720px) {
+        font-size: 1.125rem;
+        line-height: 1.25rem;
+        height: 1.25rem;
+        margin-right: 1px;
+      }
     }
 
     &-unit {
@@ -57,16 +95,29 @@
       font-size: 1.125rem;
       line-height: 1.25rem;
       margin-left: 2rem;
+
+      @media screen and (max-width: 720px) {
+        font-size: .875rem;
+        line-height: 1rem;
+        height: 1rem;
+        margin-left: 1rem;
+      }
     }
 
     &-fav-icon {
-      margin-right: 1rem;
+      position: absolute;
+      right: 2rem;
+      cursor: pointer;
     }
 
-    &.active>&-location {
+    &.active>&-location,
+    &:hover>&-location {
       color: #FFE539;
     }
 
+    &:hover {
+      background: #ffffff44;
+    }
 
   }
 }
