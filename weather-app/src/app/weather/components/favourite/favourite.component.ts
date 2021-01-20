@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-favourite',
@@ -8,14 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class FavouriteComponent implements OnInit {
   noDataFound = false;
   favourites: any[];
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   onClear(): void {
-    this.favourites = undefined;
-    this.noDataFound = true;
+    this.openDialog();
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.favourites = undefined;
+      this.noDataFound = true;
+      console.log('The dialog was closed');
+    });
+  }
 }

@@ -2,22 +2,25 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { HeaderComponent, NavigationComponent, NoDataFoundComponent, TableComponent } from './components';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
-  declarations: [HeaderComponent, TableComponent, NavigationComponent, NoDataFoundComponent],
+  declarations: [HeaderComponent, TableComponent, NavigationComponent, NoDataFoundComponent, DialogComponent],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,
     TableComponent,
     NavigationComponent,
     NoDataFoundComponent,
+    DialogComponent,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }
