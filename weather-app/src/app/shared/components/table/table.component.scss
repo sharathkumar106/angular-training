@@ -3,7 +3,9 @@
   top: 3.375rem;
   left: 1.5rem;
   right: 1.5rem;
+  bottom: 1.5rem;
   list-style: none;
+  overflow-y: auto;
 
   @media screen and (max-width: 720px) {
     padding: 0 .625rem;
@@ -31,6 +33,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      background: #ffffff1a;
     }
 
     &-location {
@@ -116,7 +119,7 @@
     }
 
     &:hover {
-      background: #ffffff44;
+      background: #ffffff22;
     }
 
   }
