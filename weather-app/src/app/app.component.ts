@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { WeatherData } from './core/models';
+import { SearchService } from './shared/services/search.service';
+import { WeatherService } from './weather/services/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +11,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'weather-app';
   showMenu = false;
-  searchValue: string;
+
+  constructor(
+    private searchService: SearchService
+  ) { }
 
   onSearch(searchItem: string): void {
-    this.searchValue = searchItem;
-    console.log(searchItem);
+    this.searchService.searchByCityName(searchItem);
   }
 }

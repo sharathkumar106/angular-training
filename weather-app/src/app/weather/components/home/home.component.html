@@ -1,6 +1,14 @@
-<div class="home">
+<ng-template #loading>
+  <h3 class="loading" *ngIf="!error; else errorPage">Loading...</h3>
+</ng-template>
+<ng-template #errorPage>
+  <app-no-data-found [message]="'Oops! There is some error. Please try again later'">
+    <p style="cursor: pointer; height: 1.5rem; margin-top: 1rem;">&larr; Go Back</p>
+  </app-no-data-found>
+</ng-template>
+<div class="home" *ngIf="data && !error; else loading">
   <header class="home-header">
-    <p class="home-header-location">Udupi, Karnataka</p>
+    <p class="home-header-location">{{data.city}}</p>
     <div class="home-wrapper">
       <i>&hearts;</i>
       <p class="home-header-favourite">Add to favourite</p>
@@ -11,13 +19,13 @@
       <img src="assets/ic_conditions/icon_mostly_sunny/icon_mostly_sunny.svg" alt="conditions icon">
     </div>
     <div class="home-wrapper">
-      <div class="home-body-value">87</div>
+      <div class="home-body-value">{{data.main.temp | number:'.0-1'}}</div>
       <div class="home-body-unit">
-        <input type="checkbox" name="checkbox" id="checkbox">
-        <label for="checkbox" class="switch"></label>
+        <input type="checkbox" name="checkbox" id="checkbox" [formControl]="switchUnit">
+        <label for="checkbox" class="switch" (click)="onSwitchUnit(data.main.temp)"></label>
       </div>
     </div>
-    <p class="home-body-condition">Mostly Sunny</p>
+    <p class="home-body-condition">{{data.condition | titlecase}}</p>
   </main>
   <footer class="home-footer">
     <ul class="home-footer-list">
@@ -27,8 +35,12 @@
             <img src="assets/ic_info/icon_temperature_info/icon_temperature_info.svg" alt="temperature icon">
           </div>
           <div class="home-footer-info">
-            <p class="home-footer-label">Min-Max</p>
-            <p class="home-footer-value">75&deg;-90&deg;</p>
+            <p class="home-footer-label">Min - Max</p>
+            <p class="home-footer-value">
+              {{data.main.temp_min | number:'.0-1'}} {{switchUnit.value? '&deg;C': '&deg;F'}}
+              -
+              {{data.main.temp_max | number:'.0-1'}} {{switchUnit.value? '&deg;C': '&deg;F' }}
+            </p>
           </div>
         </div>
       </li>
@@ -39,7 +51,7 @@
           </div>
           <div class="home-footer-info">
             <p class="home-footer-label">Precipitation</p>
-            <p class="home-footer-value">0%</p>
+            <p class="home-footer-value">{{data.precipitation}}%</p>
           </div>
         </div>
       </li>
@@ -50,7 +62,7 @@
           </div>
           <div class="home-footer-info">
             <p class="home-footer-label">Humidity</p>
-            <p class="home-footer-value">47%</p>
+            <p class="home-footer-value">{{data.main.humidity}}%</p>
           </div>
         </div>
       </li>
@@ -61,7 +73,7 @@
           </div>
           <div class="home-footer-info">
             <p class="home-footer-label">Wind</p>
-            <p class="home-footer-value">4 mph</p>
+            <p class="home-footer-value">{{data.wind}} mph</p>
           </div>
         </div>
       </li>
@@ -72,7 +84,7 @@
           </div>
           <div class="home-footer-info">
             <p class="home-footer-label">Visibility</p>
-            <p class="home-footer-value">12 mph</p>
+            <p class="home-footer-value">{{data.visibility}} mph</p>
           </div>
         </div>
       </li>
