@@ -23,7 +23,7 @@ export class FavouriteComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.storageService.getSearchFromLocal();
+    this.searchService.searchHistoryChanged.next(this.storageService.getSearchFromLocal() || []);
     const localData = this.storageService.getFavouritesFromLocal();
     this.data = this.favouriteService.favourites && !localData ? this.favouriteService.favourites : localData;
     this.favouriteService.favoritesChanged.subscribe(res => {

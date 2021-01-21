@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.storageService.getFavouritesFromLocal();
-    this.storageService.getSearchFromLocal();
+    this.searchService.searchHistoryChanged.next(this.storageService.getSearchFromLocal() || []);
+    this.favouriteService.favoritesChanged.next(this.storageService.getFavouritesFromLocal() || []);
     const searchCityName = this.searchService.searchKey;
     this.weatherService.getWeatherData(searchCityName).subscribe(res => this.data = res);
     this.weatherSubscription = this.weatherService.dataChanged.subscribe(data => {

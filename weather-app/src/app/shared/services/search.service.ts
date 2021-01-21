@@ -22,8 +22,14 @@ export class SearchService {
         this.weatherService.getWeatherData(city).subscribe(res => {
             this.searchKey = city;
             searchResult = res;
-            this.searchHistory.unshift(searchResult);
-            this.searchHistoryChanged.next(this.searchHistory);
+            if (this.searchHistory) {
+                this.searchHistory.unshift(searchResult);
+                this.searchHistoryChanged.next(this.searchHistory);
+            }
+            else {
+                this.searchHistory = [searchResult];
+                this.searchHistoryChanged.next(this.searchHistory);
+            }
         });
     }
 

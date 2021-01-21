@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
 @import './material';
 
@@ -10,12 +9,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 html,
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
+
+  ::-webkit-scrollbar {
+    width: 3px;
+    background-color: #333;
+    border-radius: 3px;
+  }
+
+  ::placeholder,
+  ::-moz-placeholder,
+  ::-webkit-input-placeholder {
+    color: rgba(#ffffff, .6);
+  }
 }
 
 
@@ -24,4 +36,14 @@ body {
   position: absolute;
   top: 3.5rem;
   left: 2rem;
+}
+
+li,
+a {
+
+  &:focus,
+  &:active,
+  &:hover {
+    outline: none;
+  }
 }

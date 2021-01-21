@@ -20,7 +20,7 @@ export class RecentSearchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.storageService.getFavouritesFromLocal();
+    this.favouriteService.favoritesChanged.next(this.storageService.getFavouritesFromLocal() || []);
     const localData = this.storageService.getSearchFromLocal();
     this.data = this.searchService.searchHistory && !localData ? this.searchService.searchHistory : localData;
     this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {

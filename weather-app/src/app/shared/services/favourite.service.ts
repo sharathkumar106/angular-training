@@ -16,8 +16,14 @@ export class FavouriteService {
     ) { }
 
     addToFavourites(data: WeatherData): void {
-        this.favourites.unshift(data);
-        this.favoritesChanged.next(this.favourites);
+        if (!this.favourites) {
+            this.favourites = [data];
+            this.favoritesChanged.next(this.favourites);
+        }
+        else {
+            this.favourites.unshift(data);
+            this.favoritesChanged.next(this.favourites);
+        }
     }
 
     removeFavourite(data: WeatherData): void {
@@ -42,6 +48,9 @@ export class FavouriteService {
     }
 
     checkFavourites(data: WeatherData): boolean {
-        return this.favourites.findIndex(item => item.city === data.city) >= 0;
+        if (this.favourites) {
+            return this.favourites.findIndex(item => item.city === data.city) >= 0;
+        }
+        return false;
     }
 }
