@@ -16,8 +16,7 @@ export class TableComponent implements OnInit {
     private favouriteService: FavouriteService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   getIcon(type: string): string {
     let iconName = '';

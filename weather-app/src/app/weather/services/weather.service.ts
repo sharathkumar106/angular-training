@@ -33,7 +33,6 @@ export class WeatherService {
                 };
             }),
             tap(res => {
-                console.table(res);
                 this.dataChanged.next(res);
             })
         );

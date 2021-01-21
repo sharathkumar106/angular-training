@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { WeatherData } from 'src/app/core/models';
 import { WeatherService } from 'src/app/weather/services/weather.service';
 import { FavouriteService } from 'src/app/shared/services/favourite.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { FavouriteService } from 'src/app/shared/services/favourite.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   weatherSubscription: Subscription;
+  searchSubscription: Subscription;
   city: string;
   data: WeatherData;
   switchUnit = new FormControl(true); // Celsius
@@ -25,10 +27,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     private weatherService: WeatherService,
     private searchService: SearchService,
     private favouriteService: FavouriteService,
+    private storageService: StorageService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.storageService.getFavouritesFromLocal();
+    this.storageService.getSearchFromLocal();
     const searchCityName = this.searchService.searchKey;
     this.weatherService.getWeatherData(searchCityName).subscribe(res => this.data = res);
     this.weatherSubscription = this.weatherService.dataChanged.subscribe(data => {
@@ -43,6 +48,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.data.main.temp_max = this.toFahrenheit(data.main.temp_max);
       }
       this.isFavourite = this.favouriteService.checkFavourites(data);
+    });
+    this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {
+      this.storageService.saveSearchToLocal(res);
     });
   }
 
@@ -119,5 +127,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.weatherSubscription.unsubscribe();
+    this.searchSubscription.unsubscribe();
   }
 }

@@ -1,9 +1,9 @@
-<ng-container *ngIf="data.length > 0; else noData">
+<ng-container *ngIf="data?.length > 0; else noData">
   <div class="search">
     <p class="search-count">You recently searched for</p>
     <p class="search-remove" (click)="onClear()">Clear All</p>
   </div>
-  <app-table [data]="data"></app-table>
+  <app-table [data]="data" (itemSelected)="onItemSelect($event)" (unfavorite)="onFavouriteClick($event)"></app-table>
 </ng-container>
 <ng-template #noData>
   <app-no-data-found [message]="'No Recent Search'"></app-no-data-found>

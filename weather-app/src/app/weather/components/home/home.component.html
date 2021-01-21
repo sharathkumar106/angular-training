@@ -20,7 +20,7 @@
       <img [src]="getIcon(data.condition)" alt="conditions icon">
     </div>
     <div class="home-wrapper">
-      <div class="home-body-value">{{data.main.temp | number:'.0-1'}}</div>
+      <div class="home-body-value">{{data.main.temp | number:'2.0-0'}}</div>
       <div class="home-body-unit">
         <input type="checkbox" name="checkbox" id="checkbox" [formControl]="switchUnit">
         <label for="checkbox" class="switch" (click)="onSwitchUnit(data.main.temp)"></label>
@@ -38,9 +38,9 @@
           <div class="home-footer-info">
             <p class="home-footer-label">Min - Max</p>
             <p class="home-footer-value">
-              {{data.main.temp_min | number:'.0-1'}} {{switchUnit.value? '&deg;C': '&deg;F'}}
+              {{data.main.temp_min | number:'2.0-0'}} {{switchUnit.value? '&deg;C': '&deg;F'}}
               -
-              {{data.main.temp_max | number:'.0-1'}} {{switchUnit.value? '&deg;C': '&deg;F' }}
+              {{data.main.temp_max | number:'2.0-0'}} {{switchUnit.value? '&deg;C': '&deg;F' }}
             </p>
           </div>
         </div>

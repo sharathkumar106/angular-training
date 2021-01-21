@@ -3,7 +3,7 @@
     <p class="table-item-location">{{item.city | titlecase}}</p>
     <div class="wrapper">
       <img class="table-item-weather-icon" [src]="getIcon(item.condition)" alt="{{item.condition}}">
-      <p class="table-item-value">{{item.main.temp | number: '2.1-1'}}</p>
+      <p class="table-item-value">{{item.main.temp | number: '2.0-0'}}</p>
       <p class="table-item-unit">&deg;C</p>
       <p class="table-item-condition">{{item.condition_desc | titlecase}}</p>
     </div>
