@@ -38,6 +38,38 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
+  getIcon(type: string): string {
+    let iconName = '';
+    switch (type) {
+      case 'Thunderstorm':
+        iconName = 'icon_thunderstorm';
+        break;
+      case 'Drizzle':
+        iconName = 'icon_mostly_cloudy';
+        break;
+      case 'Rain':
+        iconName = 'icon_rain';
+        break;
+      case 'Snow':
+        iconName = 'icon_snow';
+        break;
+      case 'Clear':
+        iconName = 'icon_clear_night';
+        break;
+      case 'Clouds':
+        iconName = 'icon_mostly_cloudy';
+        break;
+      case 'Haze':
+        iconName = 'icon_partly_cloudy';
+        break;
+      default:
+        iconName = 'icon_mostly_sunny';
+        break;
+    }
+    const iconPath = `assets/ic_conditions/${iconName}/${iconName}.svg`;
+    return iconPath;
+  }
+
   onSwitchUnit(value: number): void {
     try {
       // If switchUnit False/True - Celsius/Fahrenheit
