@@ -1,5 +1,5 @@
 <ul class="table">
-  <li class="table-item" *ngFor="let item of data; let i = index;">
+  <li class="table-item" *ngFor="let item of data; let i = index;" (click)="itemSelected.emit(i)">
     <p class="table-item-location">{{item.city | titlecase}}</p>
     <div class="wrapper">
       <img class="table-item-weather-icon" [src]="getIcon(item.condition)" alt="{{item.condition}}">
@@ -7,6 +7,6 @@
       <p class="table-item-unit">&deg;C</p>
       <p class="table-item-condition">{{item.condition_desc | titlecase}}</p>
     </div>
-    <mat-icon class="table-item-fav-icon" [ngClass]="{active: i===0}">favorite</mat-icon>
+    <mat-icon class="table-item-fav-icon" [ngClass]="{active: checkFavourite(item)}" (click)="unfavorite.emit(i)">favorite</mat-icon>
   </li>
 </ul>

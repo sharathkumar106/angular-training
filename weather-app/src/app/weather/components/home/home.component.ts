@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { WeatherData } from 'src/app/core/models';
 import { WeatherService } from 'src/app/weather/services/weather.service';
+import { FavouriteService } from 'src/app/shared/services/favourite.service';
 
 @Component({
   selector: 'app-home',
@@ -13,22 +14,24 @@ import { WeatherService } from 'src/app/weather/services/weather.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  weatherSubscription: Subscription;
   city: string;
   data: WeatherData;
   switchUnit = new FormControl(true); // Celsius
   error = false;
+  isFavourite = false;
 
   constructor(
     private weatherService: WeatherService,
     private searchService: SearchService,
+    private favouriteService: FavouriteService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     const searchCityName = this.searchService.searchKey;
     this.weatherService.getWeatherData(searchCityName).subscribe(res => this.data = res);
-    this.subscription = this.weatherService.dataChanged.subscribe(data => {
+    this.weatherSubscription = this.weatherService.dataChanged.subscribe(data => {
       if (!data) {
         this.error = true;
         return;
@@ -39,7 +42,19 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.data.main.temp_min = this.toFahrenheit(data.main.temp_min);
         this.data.main.temp_max = this.toFahrenheit(data.main.temp_max);
       }
+      this.isFavourite = this.favouriteService.checkFavourites(data);
     });
+  }
+
+  onFavoriteAdd(data: WeatherData): void {
+    if (!this.isFavourite) {
+      this.favouriteService.addToFavourites(data);
+      this.isFavourite = this.favouriteService.checkFavourites(data);
+    }
+    else {
+      this.favouriteService.removeFavourite(data);
+      this.isFavourite = this.favouriteService.checkFavourites(data);
+    }
   }
 
   getIcon(type: string): string {
@@ -103,6 +118,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.weatherSubscription.unsubscribe();
   }
 }

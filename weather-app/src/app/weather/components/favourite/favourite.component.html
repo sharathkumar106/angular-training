@@ -1,8 +1,10 @@
-<ng-container *ngIf="!noDataFound">
+<ng-container *ngIf="data?.length > 0; else noData">
   <div class="favourite">
-    <p class="favourite-count">3 City added as favourite</p>
+    <p class="favourite-count">{{data.length}} City added as favourite</p>
     <p class="favourite-remove" (click)="onClear()">Remove All</p>
   </div>
-  <app-table></app-table>
+  <app-table [data]="data" (itemSelected)="onItemSelect($event)" (unfavorite)="onUnfavourite($event)"></app-table>
 </ng-container>
-<app-no-data-found *ngIf="noDataFound" [message]="'No Favourites added'"></app-no-data-found>
+<ng-template #noData>
+  <app-no-data-found [message]="'No Favourites added'"></app-no-data-found>
+</ng-template>

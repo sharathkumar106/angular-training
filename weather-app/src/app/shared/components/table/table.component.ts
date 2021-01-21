@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherData } from 'src/app/core/models';
+import { FavouriteService } from 'src/app/shared/services/favourite.service';
 
 @Component({
   selector: 'app-table',
@@ -8,7 +9,12 @@ import { WeatherData } from 'src/app/core/models';
 })
 export class TableComponent implements OnInit {
   @Input() data: WeatherData[];
-  constructor() { }
+  @Output() itemSelected = new EventEmitter<number>();
+  @Output() unfavorite = new EventEmitter<number>();
+
+  constructor(
+    private favouriteService: FavouriteService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -43,6 +49,10 @@ export class TableComponent implements OnInit {
     }
     const iconPath = `assets/ic_conditions/${iconName}/${iconName}.svg`;
     return iconPath;
+  }
+
+  checkFavourite(item: WeatherData): boolean {
+    return this.favouriteService.checkFavourites(item);
   }
 
 }

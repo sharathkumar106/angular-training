@@ -9,9 +9,10 @@
 <div class="home" *ngIf="data && !error; else loading">
   <header class="home-header">
     <p class="home-header-location">{{data.city}}</p>
-    <div class="home-wrapper">
-      <mat-icon class="home-header-icon active">favorite</mat-icon>
-      <p class="home-header-favourite active">Add to favourite</p>
+    <div class="home-wrapper" (click)="onFavoriteAdd(data)">
+      <mat-icon class="home-header-icon" [ngClass]="{active: isFavourite}">favorite</mat-icon>
+      <p class="home-header-favourite" [ngClass]="{active: isFavourite}">
+        {{ isFavourite ? 'Added to Favourites': 'Add to favourite' }}</p>
     </div>
   </header>
   <main class="home-body">
