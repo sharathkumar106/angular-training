@@ -3,7 +3,7 @@
 </ng-template>
 <ng-template #errorPage>
   <app-no-data-found [message]="'Oops! There is some error. Please try again later'">
-    <p style="cursor: pointer; height: 1.5rem; margin-top: 1rem;">&larr; Go Back</p>
+    <p style="cursor: pointer; height: 1.5rem; margin-top: 1rem;" (click)="onGoBack()">&larr; Go Back</p>
   </app-no-data-found>
 </ng-template>
 <div class="home" *ngIf="data && !error; else loading">

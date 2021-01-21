@@ -17,9 +17,9 @@ export class WeatherService {
         private http: HttpClient
     ) { }
 
-    getWeatherData(location = 'Mangalore'): void {
+    getWeatherData(location = 'Mangalore'): Observable<WeatherData> {
         const url = `${this.WEATHER_BASE_URL}${location}&appid=${this.WEATHER_API_KEY}&units=metric`;
-        this.http.get<any>(url).pipe(
+        return this.http.get<any>(url).pipe(
             map((res) => {
                 return {
                     city: res.name,
@@ -32,10 +32,10 @@ export class WeatherService {
                     condition_desc: res.weather[0].description
                 };
             }),
-            tap(res => console.table(res))
-        ).subscribe(res => {
-            this.weatherData = res;
-            this.dataChanged.next(res);
-        });
+            tap(res => {
+                console.table(res);
+                this.dataChanged.next(res);
+            })
+        );
     }
 }

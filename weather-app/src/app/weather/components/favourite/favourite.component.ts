@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { WeatherData } from 'src/app/core/models';
 
 @Component({
   selector: 'app-favourite',
@@ -9,7 +10,7 @@ import { DialogComponent } from 'src/app/shared/components/dialog/dialog.compone
 })
 export class FavouriteComponent implements OnInit {
   noDataFound = false;
-  favourites: any[];
+  favourites: WeatherData[];
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {

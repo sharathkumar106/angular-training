@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   @Output() isMenuClicked = new EventEmitter<void>();
   @Output() searchValue = new EventEmitter<string>();
   searchMode = false;
-  search = new FormControl();
+  search = new FormControl('', Validators.required);
   constructor() { }
 
   ngOnInit(): void {
@@ -21,7 +21,13 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearch(): void {
-    this.searchValue.emit(this.search.value);
-    this.searchMode = !this.searchMode;
+    if (this.search.valid) {
+      this.searchValue.emit(this.search.value);
+      this.search.reset();
+      this.searchMode = !this.searchMode;
+    }
+    else {
+      this.searchMode = !this.searchMode;
+    }
   }
 }

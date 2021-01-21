@@ -110,7 +110,12 @@
     &-fav-icon {
       position: absolute;
       right: 2rem;
+      color: white;
       cursor: pointer;
+
+      &.active {
+        color: #FFE539;
+      }
     }
 
     &.active>&-location,

@@ -1,10 +1,11 @@
+import { SearchService } from 'src/app/shared/services/search.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { WeatherData } from 'src/app/core/models';
 import { WeatherService } from 'src/app/weather/services/weather.service';
-import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
   selector: 'app-home',
@@ -13,22 +14,25 @@ import { SearchService } from 'src/app/shared/services/search.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  DEFAULT_CITY = 'Mangalore, Karnataka';
   city: string;
   data: WeatherData;
   switchUnit = new FormControl(true); // Celsius
   error = false;
 
   constructor(
-    private weatherService: WeatherService) { }
+    private weatherService: WeatherService,
+    private searchService: SearchService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-    // this.weatherService.getWeatherData(this.DEFAULT_CITY).subscribe((resData: WeatherData) => {
-    //   this.weatherService.weatherData = resData;
-    //   this.weatherService.dataChanged.next(resData);
-    // });
-    this.weatherService.getWeatherData();
+    const searchCityName = this.searchService.searchKey;
+    this.weatherService.getWeatherData(searchCityName).subscribe(res => this.data = res);
     this.subscription = this.weatherService.dataChanged.subscribe(data => {
+      if (!data) {
+        this.error = true;
+        return;
+      }
       this.data = data;
       if (!this.switchUnit.value) {
         this.data.main.temp = this.toFahrenheit(data.main.temp);
@@ -93,29 +97,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     return (value * 9 / 5) + 32;
   }
 
+  onGoBack(): void {
+    this.error = false;
+    this.router.navigate(['/']);
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }
-
-
-/*
-
-Sample Empty WeatherData
- city: '',
-    main: {
-      humidity: 0,
-      pressure: 0,
-      temp: 0,
-      temp_max: 0,
-      temp_min: 0,
-      feels_like: 0
-    },
-    clouds: 0,
-    precipitation: 0,
-    visibility: 0,
-    wind: 0,
-    condition: '',
-    condition_desc: ''
-
-*/

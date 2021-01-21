@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { WeatherData } from 'src/app/core/models';
 import { WeatherService } from 'src/app/weather/services/weather.service';
 
@@ -7,12 +7,26 @@ import { WeatherService } from 'src/app/weather/services/weather.service';
     providedIn: 'root'
 })
 export class SearchService {
-    searchKey = new Subject<string>();
+    searchKey: string;
+    searchHistory: WeatherData[] = [];
+    searchHistoryChanged = new Subject<WeatherData[]>();
     constructor(
         private weatherService: WeatherService
     ) { }
 
     searchByCityName(city: string): void {
-        this.weatherService.getWeatherData(city);
+        let searchResult: WeatherData;
+        this.weatherService.getWeatherData(city).subscribe(res => {
+            this.searchKey = city;
+            searchResult = res;
+            this.searchHistory.unshift(searchResult);
+            this.searchHistoryChanged.next(this.searchHistory);
+        });
+    }
+
+    clearAll(): void {
+        this.searchHistory = [];
+        this.searchKey = undefined;
+        this.searchHistoryChanged.next(this.searchHistory);
     }
 }

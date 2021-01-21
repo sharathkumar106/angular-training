@@ -1,8 +1,10 @@
-<ng-container *ngIf="!noDataFound">
+<ng-container *ngIf="data.length > 0; else noData">
   <div class="search">
     <p class="search-count">You recently searched for</p>
     <p class="search-remove" (click)="onClear()">Clear All</p>
   </div>
-  <app-table></app-table>
+  <app-table [data]="data"></app-table>
 </ng-container>
-<app-no-data-found *ngIf="noDataFound" [message]="'No Recent Search'"></app-no-data-found>
+<ng-template #noData>
+  <app-no-data-found [message]="'No Recent Search'"></app-no-data-found>
+</ng-template>
