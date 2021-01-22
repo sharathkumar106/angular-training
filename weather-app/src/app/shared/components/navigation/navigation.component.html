@@ -4,7 +4,7 @@
     <li class="navigation-item" [routerLink]="['../favourite']" routerLinkActive="active">Favourite</li>
     <li class="navigation-item" [routerLink]="['../recent-search']" routerLinkActive="active">Recent Search</li>
   </ul>
-  <p class="navigation-date">
+  <p class="navigation-date" [ngClass]="{hide: router.url.toLocaleLowerCase() !== '/home'}">
     {{date | date: 'EEE, dd MMM yyyy hh:mm aa'}}
   </p>
 

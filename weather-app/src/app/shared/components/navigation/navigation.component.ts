@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -9,7 +10,9 @@ export class NavigationComponent implements OnInit {
   @Input() show: boolean;
   @Output() closeMenu = new EventEmitter<void>();
   date: Date;
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
     this.date = new Date();

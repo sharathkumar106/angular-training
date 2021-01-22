@@ -8,7 +8,8 @@
   overflow-y: auto;
 
   @media screen and (max-width: 720px) {
-    padding: 0 .625rem;
+    // padding: 0 .625rem;
+    top: -1.25rem;
   }
 
   &-item {

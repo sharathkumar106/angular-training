@@ -81,6 +81,10 @@
       text-align: center;
       margin: 0;
       text-transform: uppercase;
+
+      &.hide {
+        display: none;
+      }
     }
   }
 
