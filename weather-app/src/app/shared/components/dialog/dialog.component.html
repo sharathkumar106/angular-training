@@ -1,9 +1,9 @@
 <div class="dialog">
   <div>
-    <p class="message">Are you sure want to remove all the favourites?</p>
+    <p class="message">{{ message ? message : 'Are you sure want to remove all the favourites?'}}</p>
   </div>
   <div class="actions">
-    <button class="button button-transparent" (click)="onNoClick()">No</button>
-    <button class="button" (click)="onYesClick()" cdkFocusInitial>Yes</button>
+    <button class="button button-transparent" (click)="onNoClick()">{{message? 'Close' : 'No'}}</button>
+    <button class="button" (click)="onYesClick()" cdkFocusInitial *ngIf="!message">Yes</button>
   </div>
 </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FavouriteService } from 'src/app/shared/services/favourite.service';
 
 @Component({
@@ -8,12 +8,14 @@ import { FavouriteService } from 'src/app/shared/services/favourite.service';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
-
+  message: string;
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: string,
     private favouriteService: FavouriteService
-
-  ) { }
+  ) {
+    this.message = data;
+  }
 
   ngOnInit(): void {
   }

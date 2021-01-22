@@ -1,6 +1,8 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WeatherData } from 'src/app/core/models';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 import { FavouriteService } from 'src/app/shared/services/favourite.service';
 import { SearchService } from 'src/app/shared/services/search.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
@@ -17,12 +19,16 @@ export class RecentSearchComponent implements OnInit, OnDestroy {
   constructor(
     private searchService: SearchService,
     private favouriteService: FavouriteService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.data = this.storageService.getSearchFromLocal() || [];
     this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {
+      if (!res) {
+        this.dialog.open(DialogComponent, { data: 'Data not found for this location!' });
+      }
       this.data = res;
       this.storageService.saveSearchToLocal(res);
     });

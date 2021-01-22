@@ -1,5 +1,6 @@
 export interface WeatherData {
     city: string;
+    country?: string;
     main: Main;
     visibility?: number;
     wind?: number;

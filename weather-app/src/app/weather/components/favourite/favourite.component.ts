@@ -30,6 +30,9 @@ export class FavouriteComponent implements OnInit, OnDestroy {
       this.storageService.saveFavoritesToLocal(res);
     });
     this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {
+      if (!res) {
+        this.openDialog('Data not found for this location!');
+      }
       this.storageService.saveSearchToLocal(res);
     });
   }
@@ -51,11 +54,12 @@ export class FavouriteComponent implements OnInit, OnDestroy {
     this.searchSubscription.unsubscribe();
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent);
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
-    });
+  openDialog(message?: string): void {
+    if (message) {
+      this.dialog.open(DialogComponent);
+    }
+    else {
+      this.dialog.open(DialogComponent, { data: message });
+    }
   }
 }

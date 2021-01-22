@@ -8,7 +8,7 @@
 </ng-template>
 <div class="home" *ngIf="data && !error; else loading">
   <header class="home-header">
-    <p class="home-header-location">{{data.city}}</p>
+    <p class="home-header-location">{{data.city | titlecase}}, {{data.country | uppercase}}</p>
     <div class="home-wrapper" (click)="onFavoriteAdd(data)">
       <img class="home-header-icon" *ngIf="!isFavourite" src="assets/ic_heart/heart.svg" />
       <mat-icon class="home-header-icon" *ngIf="isFavourite" [ngClass]="{active: isFavourite}">favorite</mat-icon>

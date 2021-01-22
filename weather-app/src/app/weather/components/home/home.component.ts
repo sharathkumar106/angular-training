@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { SearchService } from 'src/app/shared/services/search.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,6 +9,7 @@ import { WeatherData } from 'src/app/core/models';
 import { WeatherService } from 'src/app/weather/services/weather.service';
 import { FavouriteService } from 'src/app/shared/services/favourite.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   data: WeatherData;
   switchUnit = new FormControl(true); // Celsius
   error = false;
+  invalidSearch = false;
   isFavourite = false;
 
   constructor(
@@ -29,6 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private favouriteService: FavouriteService,
     private storageService: StorageService,
+    public dialog: MatDialog,
     private router: Router,
   ) { }
 
@@ -36,7 +40,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     const searchCityName = this.searchService.searchKey;
     this.weatherService.getWeatherData(searchCityName).subscribe(res => {
       this.data = res;
-    });
+    },
+      err => {
+        this.openDialog('Data not found for this location!');
+      }
+    );
     this.weatherSubscription = this.weatherService.dataChanged.subscribe(data => {
       if (!data) {
         this.error = true;
@@ -52,6 +60,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isFavourite = this.favouriteService.checkFavourites(data);
     });
     this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {
+      if (!res) {
+        this.openDialog('Data not found for this location!');
+      }
       this.storageService.saveSearchToLocal(res);
     });
     this.favouriteSubscription = this.favouriteService.favoritesChanged.subscribe(res => {
@@ -129,6 +140,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   onGoBack(): void {
     this.error = false;
     this.router.navigate(['/']);
+  }
+
+  onCloseError(): void {
+    this.invalidSearch = false;
+  }
+
+  openDialog(message: string): void {
+    const dialogRef = this.dialog.open(DialogComponent, { data: message });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.invalidSearch = false;
+    });
   }
 
   ngOnDestroy(): void {

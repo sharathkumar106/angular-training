@@ -1,6 +1,6 @@
 <ul class="table">
   <li class="table-item" *ngFor="let item of data; let i = index;" (click)="itemSelected.emit(i)">
-    <p class="table-item-location">{{item.city | titlecase}}</p>
+    <p class="table-item-location">{{item.city | titlecase}}, {{item.country | uppercase}}</p>
     <div class="wrapper">
       <img class="table-item-weather-icon" [src]="getIcon(item.condition)" alt="{{item.condition}}">
       <p class="table-item-value">{{item.main.temp | number: '2.0-0'}}</p>
