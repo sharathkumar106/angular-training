@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { WeatherData } from 'src/app/core/models';
 import { FavouriteService } from 'src/app/shared/services/favourite.service';
 import { SearchService } from 'src/app/shared/services/search.service';
@@ -7,6 +8,8 @@ import { SearchService } from 'src/app/shared/services/search.service';
     providedIn: 'root'
 })
 export class StorageService {
+    // unitController = new BehaviorSubject<boolean>(true); // Celsius
+
     constructor(
         private favouriteService: FavouriteService,
         private searchService: SearchService
@@ -31,4 +34,8 @@ export class StorageService {
         this.favouriteService.favourites = data;
         return data;
     }
+
+    // getUnitController(): Observable<boolean> {
+    //     return this.unitController.asObservable();
+    // }
 }

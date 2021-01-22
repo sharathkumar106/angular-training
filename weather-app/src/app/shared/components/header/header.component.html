@@ -4,7 +4,7 @@
   </div>
   <div class="header-search">
     <input class="header-search-control" type="text" id="search" placeholder="Search City" name="search"
-      [formControl]="search">
+      [formControl]="search" (keyup.enter)="onSearch()">
     <label for="search">
       <img class="header-search-icon" src="assets/icons-responsive/icon_search_white.png" alt="Search Icon"
         (click)="onSearch()">
@@ -18,7 +18,7 @@
   </div>
   <div class="header-search resp" *ngIf="searchMode">
     <input class="header-search-control resp" type="text" id="search" placeholder="Search City" name="search"
-      [formControl]="search">
+      [formControl]="search" (keyup.enter)="onSearch()">
   </div>
   <img class="resp-header-search-icon" src="assets/icons-responsive/icon_search_white.png" alt="Search Icon"
     (click)="onSearch()">

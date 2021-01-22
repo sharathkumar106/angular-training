@@ -13,6 +13,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
   styleUrls: ['./favourite.component.scss']
 })
 export class FavouriteComponent implements OnInit, OnDestroy {
+  favouriteSubscription: Subscription;
   searchSubscription: Subscription;
   data: WeatherData[];
   constructor(
@@ -23,10 +24,8 @@ export class FavouriteComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.searchService.searchHistoryChanged.next(this.storageService.getSearchFromLocal() || []);
-    const localData = this.storageService.getFavouritesFromLocal();
-    this.data = this.favouriteService.favourites && !localData ? this.favouriteService.favourites : localData;
-    this.favouriteService.favoritesChanged.subscribe(res => {
+    this.data = this.storageService.getFavouritesFromLocal();
+    this.favouriteSubscription = this.favouriteService.favoritesChanged.subscribe(res => {
       this.data = res;
       this.storageService.saveFavoritesToLocal(res);
     });
@@ -48,6 +47,7 @@ export class FavouriteComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.favouriteSubscription.unsubscribe();
     this.searchSubscription.unsubscribe();
   }
 

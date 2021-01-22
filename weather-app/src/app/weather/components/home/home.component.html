@@ -10,7 +10,8 @@
   <header class="home-header">
     <p class="home-header-location">{{data.city}}</p>
     <div class="home-wrapper" (click)="onFavoriteAdd(data)">
-      <mat-icon class="home-header-icon" [ngClass]="{active: isFavourite}">favorite</mat-icon>
+      <img class="home-header-icon" *ngIf="!isFavourite" src="assets/ic_heart/heart.svg" />
+      <mat-icon class="home-header-icon" *ngIf="isFavourite" [ngClass]="{active: isFavourite}">favorite</mat-icon>
       <p class="home-header-favourite" [ngClass]="{active: isFavourite}">
         {{ isFavourite ? 'Added to Favourites': 'Add to favourite' }}</p>
     </div>

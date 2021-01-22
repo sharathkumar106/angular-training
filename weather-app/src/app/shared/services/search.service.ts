@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { WeatherData } from 'src/app/core/models';
 import { WeatherService } from 'src/app/weather/services/weather.service';
-import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Injectable({
     providedIn: 'root'

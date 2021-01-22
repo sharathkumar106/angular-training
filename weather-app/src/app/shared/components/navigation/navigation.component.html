@@ -5,7 +5,7 @@
     <li class="navigation-item" [routerLink]="['../recent-search']" routerLinkActive="active">Recent Search</li>
   </ul>
   <p class="navigation-date">
-    {{date | date: 'EEE, dd MMM yyyy hh:mm aa' | titlecase}}
+    {{date | date: 'EEE, dd MMM yyyy hh:mm aa'}}
   </p>
 
   <div class="sidebar" *ngIf="show">

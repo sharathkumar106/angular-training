@@ -17,6 +17,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 export class HomeComponent implements OnInit, OnDestroy {
   weatherSubscription: Subscription;
   searchSubscription: Subscription;
+  favouriteSubscription: Subscription;
   city: string;
   data: WeatherData;
   switchUnit = new FormControl(true); // Celsius
@@ -32,13 +33,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.searchService.searchHistoryChanged.next(this.storageService.getSearchFromLocal() || []);
-    this.favouriteService.favoritesChanged.next(this.storageService.getFavouritesFromLocal() || []);
     const searchCityName = this.searchService.searchKey;
-    this.weatherService.getWeatherData(searchCityName).subscribe(res => this.data = res);
+    this.weatherService.getWeatherData(searchCityName).subscribe(res => {
+      this.data = res;
+    });
     this.weatherSubscription = this.weatherService.dataChanged.subscribe(data => {
       if (!data) {
         this.error = true;
+        console.log('No Data Found');
         return;
       }
       this.data = data;
@@ -51,6 +53,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {
       this.storageService.saveSearchToLocal(res);
+    });
+    this.favouriteSubscription = this.favouriteService.favoritesChanged.subscribe(res => {
+      this.storageService.saveFavoritesToLocal(res);
     });
   }
 
@@ -98,6 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSwitchUnit(value: number): void {
+    // this.storageService.unitController.next(this.switchUnit.value);
     try {
       // If switchUnit False/True - Celsius/Fahrenheit
       this.data.main.temp = !this.switchUnit.value ? this.toCelsius(value) : this.toFahrenheit(value);
@@ -128,5 +134,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.weatherSubscription.unsubscribe();
     this.searchSubscription.unsubscribe();
+    this.favouriteSubscription.unsubscribe();
   }
 }

@@ -30,4 +30,9 @@ export class HeaderComponent implements OnInit {
       this.searchMode = !this.searchMode;
     }
   }
+
+  onClear(): void {
+    this.search.reset();
+    this.searchMode = !this.searchMode;
+  }
 }

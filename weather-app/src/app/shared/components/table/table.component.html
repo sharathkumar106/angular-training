@@ -7,6 +7,11 @@
       <p class="table-item-unit">&deg;C</p>
       <p class="table-item-condition">{{item.condition_desc | titlecase}}</p>
     </div>
-    <mat-icon class="table-item-fav-icon" [ngClass]="{active: checkFavourite(item)}" (click)="unfavorite.emit(i)">favorite</mat-icon>
+    <img class="table-item-fav-icon" *ngIf="!checkFavourite(item)" src="assets/ic_heart/heart.svg"
+      (click)="unfavorite.emit(i)" />
+    <mat-icon class="table-item-fav-icon" *ngIf="checkFavourite(item)" [ngClass]="{active: checkFavourite(item)}"
+      (click)="unfavorite.emit(i)">favorite</mat-icon>
+    <!-- <mat-icon class="table-item-fav-icon" [ngClass]="{active: checkFavourite(item)}" (click)="unfavorite.emit(i)">
+      favorite</mat-icon> -->
   </li>
 </ul>

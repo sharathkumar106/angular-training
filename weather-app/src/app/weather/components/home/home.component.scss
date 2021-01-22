@@ -50,6 +50,8 @@
 
     &-icon {
       cursor: pointer;
+      height: 1.5rem;
+      width: 1.325rem;
 
       &.active {
         color: #FAD05B;
@@ -198,8 +200,9 @@
     bottom: 3rem;
     left: 0;
     right: 0;
-    padding: 0 .625rem;
+    padding: 0 .625rem .5rem;
     border-top: solid 1px #ffffff4d;
+    overflow-x: auto;
 
     @media screen and (max-width: 720px) {
       bottom: 0;
