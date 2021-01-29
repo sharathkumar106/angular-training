@@ -10,6 +10,7 @@ import { WeatherService } from 'src/app/weather/services/weather.service';
 import { FavouriteService } from 'src/app/shared/services/favourite.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   error = false;
   invalidSearch = false;
   isFavourite = false;
+  loadingMessage = 'Loading...';
 
   constructor(
     private weatherService: WeatherService,
@@ -38,10 +40,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const searchCityName = this.searchService.searchKey;
+    this.storageService.getFavouritesFromLocal();
     this.weatherService.getWeatherData(searchCityName).subscribe(res => {
       this.data = res;
     },
       err => {
+        this.loadingMessage = 'Oops...Network Error!';
         this.openDialog('Data not found for this location!');
       }
     );
@@ -51,6 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log('No Data Found');
         return;
       }
+      this.loadingMessage = 'Loading...';
       this.data = data;
       if (!this.switchUnit.value) {
         this.data.main.temp = this.toFahrenheit(data.main.temp);
@@ -61,6 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.searchSubscription = this.searchService.searchHistoryChanged.subscribe(res => {
       if (!res) {
+        this.loadingMessage = 'Data not found for this location!';
         this.openDialog('Data not found for this location!');
       }
       this.storageService.saveSearchToLocal(res);

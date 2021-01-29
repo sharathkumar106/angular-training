@@ -1,5 +1,5 @@
 <ng-template #loading>
-  <h3 class="loading" *ngIf="!error; else errorPage">Loading...</h3>
+  <h3 class="loading" *ngIf="!error; else errorPage">{{loadingMessage}}</h3>
 </ng-template>
 <ng-template #errorPage>
   <app-no-data-found [message]="'Oops! There is some error. Please try again later'">

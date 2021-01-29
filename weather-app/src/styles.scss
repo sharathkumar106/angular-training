@@ -1,7 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
-@import './material';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;display=swap');
+@import '~@angular/material/theming';
+@include mat-core();
+
+// Use the desired palette
+$palette: mat-palette($mat-indigo);
+// Create the theme
+$theme: mat-light-theme($palette, $palette);
+
+// Include component specific mixin
+@include mat-dialog-theme($theme);
 
 *,
 *::before,
@@ -26,6 +33,10 @@ body {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgb(72 53 93);
     box-shadow: inset 0 0 6px rgb(72 53 93);
+  }
+
+  ::-webkit-input-placeholder {
+    color: #ffffff9d !important;
   }
 }
 

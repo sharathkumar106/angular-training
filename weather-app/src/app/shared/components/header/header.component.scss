@@ -13,6 +13,13 @@
     display: none;
   }
 
+  &-logo {
+    img {
+      width: 141px;
+      height: 30px;
+    }
+  }
+
   &-search {
     height: 3rem;
     max-width: 28rem;
@@ -71,6 +78,11 @@
   justify-content: space-between;
   align-items: center;
   display: none;
+
+  &-logo {
+    width: 141px;
+    height: 30px;
+  }
 
   &-menu {
     width: 1.5rem;
